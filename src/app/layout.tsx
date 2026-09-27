@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PIXELINTEL - Gaming News, Reviews & Industry Analysis",
+  title: "gamerX - Gaming News, Reviews & Industry Analysis",
   description: "Your ultimate destination for gaming news, insights, reviews and industry analysis.",
 };
 

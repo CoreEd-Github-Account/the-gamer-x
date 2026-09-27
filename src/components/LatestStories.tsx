@@ -16,7 +16,7 @@ const StoryImage: React.FC<{
   if (hasError || !src) {
     return (
       <div className={`w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center text-slate-500 text-xs font-mono ${className}`}>
-        <span>PIXELINTEL</span>
+        <span>gamerX</span>
       </div>
     );
   }

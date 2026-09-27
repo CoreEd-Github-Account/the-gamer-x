@@ -9,9 +9,9 @@ import {
 } from "../types";
 
 export const SITE_INFO = {
-  name: "PIXELINTEL",
+  name: "gamerX",
   tagline: "NEWS. INSIGHTS. GAMING.",
-  logoLetter: "P",
+  logoLetter: "g",
 };
 
 export const NAV_LINKS: NavLink[] = [
@@ -352,5 +352,5 @@ export const FOOTER_DATA = {
       ],
     },
   ],
-  copyright: "© 2025 PixelIntel. All rights reserved.",
+  copyright: "© 2025 gamerX. All rights reserved.",
 };
