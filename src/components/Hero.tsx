@@ -3,24 +3,38 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { HERO_SLIDES } from "../data/landingData";
+import { HeroSlide } from "../types";
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  slides?: HeroSlide[];
+}
+
+export const Hero: React.FC<HeroProps> = ({ slides = HERO_SLIDES }) => {
+  const activeSlides = slides && slides.length > 0 ? slides : HERO_SLIDES;
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-  const [imgError, setImgError] = useState(false);
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
-  const currentSlide = HERO_SLIDES[activeSlideIndex] || HERO_SLIDES[0];
+  const currentSlide = activeSlides[activeSlideIndex] || activeSlides[0];
+  const isImgError = currentSlide.imageUrl ? failedImages[currentSlide.imageUrl] : true;
 
   return (
     <section className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[640px] flex items-end overflow-hidden bg-[#080b11]">
       {/* Background Graphic & Image with Fallback */}
       <div className="absolute inset-0 z-0">
-        {!imgError ? (
+        {!isImgError && currentSlide.imageUrl ? (
           <Image
             src={currentSlide.imageUrl}
-            alt={currentSlide.imageAlt}
+            alt={currentSlide.imageAlt || currentSlide.title}
             fill
             priority
-            onError={() => setImgError(true)}
+            onError={() => {
+              if (currentSlide.imageUrl) {
+                setFailedImages((prev) => ({
+                  ...prev,
+                  [currentSlide.imageUrl]: true,
+                }));
+              }
+            }}
             className="object-cover object-center scale-100 transition-transform duration-700 ease-out"
           />
         ) : (
@@ -75,11 +89,11 @@ export const Hero: React.FC = () => {
               role="tablist"
               aria-label="Hero Slides"
             >
-              {HERO_SLIDES.map((slide, idx) => {
+              {activeSlides.map((slide, idx) => {
                 const isActive = idx === activeSlideIndex;
                 return (
                   <button
-                    key={slide.id}
+                    key={slide.id || idx}
                     onClick={() => setActiveSlideIndex(idx)}
                     role="tab"
                     aria-selected={isActive}

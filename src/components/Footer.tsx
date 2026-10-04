@@ -1,5 +1,6 @@
 import React from "react";
 import { SITE_INFO, FOOTER_DATA } from "../data/landingData";
+import { GlobalSettings } from "../types";
 
 const SocialIcon: React.FC<{ platform: string }> = ({ platform }) => {
   switch (platform) {
@@ -32,7 +33,62 @@ const SocialIcon: React.FC<{ platform: string }> = ({ platform }) => {
   }
 };
 
-export const Footer: React.FC = () => {
+export interface FooterProps {
+  aboutText?: string;
+  copyrightText?: string;
+  twitterLink?: string;
+  discordLink?: string;
+  youtubeLink?: string;
+  settings?: GlobalSettings;
+}
+
+export const Footer: React.FC<FooterProps> = ({
+  aboutText,
+  copyrightText,
+  twitterLink,
+  discordLink,
+  youtubeLink,
+  settings,
+}) => {
+  const mission =
+    aboutText ||
+    settings?.footerAboutText ||
+    FOOTER_DATA.mission;
+
+  const copyright =
+    copyrightText ||
+    settings?.copyrightText ||
+    FOOTER_DATA.copyright;
+
+  const twitterHref =
+    twitterLink ||
+    settings?.twitterLink ||
+    FOOTER_DATA.socialLinks.find((s) => s.platform === "twitter")?.href ||
+    "https://twitter.com";
+
+  const youtubeHref =
+    youtubeLink ||
+    settings?.youtubeLink ||
+    FOOTER_DATA.socialLinks.find((s) => s.platform === "youtube")?.href ||
+    "https://youtube.com";
+
+  const discordHref =
+    discordLink ||
+    settings?.discordLink ||
+    FOOTER_DATA.socialLinks.find((s) => s.platform === "discord")?.href ||
+    "https://discord.com";
+
+  const instagramHref =
+    FOOTER_DATA.socialLinks.find((s) => s.platform === "instagram")?.href ||
+    "https://instagram.com";
+
+  const socialLinks = [
+    { name: "Twitter", href: twitterHref, platform: "twitter" as const },
+    { name: "YouTube", href: youtubeHref, platform: "youtube" as const },
+    { name: "Discord", href: discordHref, platform: "discord" as const },
+    { name: "Instagram", href: instagramHref, platform: "instagram" as const },
+  ];
+
   return (
     <footer className="w-full border-t border-white/10 bg-[#06090f] pt-12 sm:pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,13 +115,13 @@ export const Footer: React.FC = () => {
 
               {/* Mission Statement */}
               <p className="text-xs text-slate-400 max-w-sm leading-relaxed mb-6 font-normal">
-                {FOOTER_DATA.mission}
+                {mission}
               </p>
             </div>
 
             {/* Social Icons Row */}
             <div className="flex items-center gap-2.5">
-              {FOOTER_DATA.socialLinks.map((item) => (
+              {socialLinks.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
@@ -104,7 +160,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar: Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
-          <p>{FOOTER_DATA.copyright}</p>
+          <p>{copyright}</p>
           <div className="flex items-center gap-4 text-[11px]">
             <a href="#privacy" className="hover:text-slate-400 transition-colors">Privacy</a>
             <span>&bull;</span>

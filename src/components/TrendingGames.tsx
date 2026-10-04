@@ -2,9 +2,14 @@
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import SectionHeader from "./ui/SectionHeader";
 import { TRENDING_GAMES } from "../data/landingData";
 import { TrendingGame } from "../types";
+
+interface TrendingGamesProps {
+  games?: TrendingGame[];
+}
 
 const GamePosterImage: React.FC<{
   src: string;
@@ -36,7 +41,10 @@ const GamePosterImage: React.FC<{
   );
 };
 
-export const TrendingGames: React.FC = () => {
+export const TrendingGames: React.FC<TrendingGamesProps> = ({
+  games = TRENDING_GAMES,
+}) => {
+  const activeGames = games && games.length > 0 ? games : TRENDING_GAMES;
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollRight = () => {
@@ -65,14 +73,24 @@ export const TrendingGames: React.FC = () => {
           ref={scrollContainerRef}
           className="flex items-start gap-4 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {TRENDING_GAMES.map((game: TrendingGame) => {
+          {activeGames.map((game: TrendingGame) => {
             const isFeatured = game.isFeatured;
-            return (
-              <a
-                key={game.id}
-                href={game.href || `#${game.id}`}
-                className="group flex-shrink-0 w-32 sm:w-36 md:w-40 snap-start flex flex-col focus:outline-none"
-              >
+            const gameHref = game.slug
+              ? `/games/${game.slug}`
+              : game.href && (game.href.startsWith("http://") || game.href.startsWith("https://"))
+              ? game.href
+              : game.id && !game.id.startsWith("#")
+              ? `/games/${game.id}`
+              : game.href || "#";
+
+            const isExternal =
+              gameHref.startsWith("http://") || gameHref.startsWith("https://");
+
+            const cardClasses =
+              "group flex-shrink-0 w-32 sm:w-36 md:w-40 snap-start flex flex-col focus:outline-none";
+
+            const cardContent = (
+              <>
                 {/* Poster Card Container */}
                 <div
                   className={`relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-[#0e131f] transition-all duration-300 ${
@@ -102,7 +120,23 @@ export const TrendingGames: React.FC = () => {
                 <span className="mt-2.5 text-xs font-bold text-center text-slate-300 group-hover:text-white transition-colors truncate px-1">
                   {game.title}
                 </span>
+              </>
+            );
+
+            return isExternal ? (
+              <a
+                key={game.id}
+                href={gameHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cardClasses}
+              >
+                {cardContent}
               </a>
+            ) : (
+              <Link key={game.id} href={gameHref} className={cardClasses}>
+                {cardContent}
+              </Link>
             );
           })}
         </div>

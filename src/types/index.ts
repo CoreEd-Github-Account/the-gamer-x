@@ -23,6 +23,8 @@ export interface Story {
   date: string;
   readTime: string;
   imageUrl: string;
+  slug?: string;
+  content?: string;
   isMain?: boolean;
   description?: string;
   href?: string;
@@ -34,6 +36,9 @@ export interface TrendingGame {
   id: string;
   title: string;
   imageUrl: string;
+  category?: string;
+  slug?: string;
+  content?: string;
   isFeatured?: boolean;
   href?: string;
 }
@@ -46,9 +51,12 @@ export interface IndustryArticle {
   category: string;
   title: string;
   description: string;
+  excerpt?: string;
   date: string;
   readTime: string;
   imageUrl: string;
+  slug?: string;
+  content?: string;
   href?: string;
 }
 
@@ -62,6 +70,8 @@ export interface ReviewItem {
   maxRating?: number;
   date: string;
   imageUrl: string;
+  slug?: string;
+  content?: string;
   href?: string;
 }
 
@@ -85,4 +95,14 @@ export interface SocialLink {
 export interface FooterLinkGroup {
   title: string;
   links: { label: string; href: string }[];
+}
+
+export interface GlobalSettings {
+  footerAboutText?: string;
+  copyrightText?: string;
+  twitterLink?: string;
+  discordLink?: string;
+  youtubeLink?: string;
+  newsletterHeading?: string;
+  newsletterSubtitle?: string;
 }

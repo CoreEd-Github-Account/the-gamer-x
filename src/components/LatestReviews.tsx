@@ -2,11 +2,16 @@
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import SectionHeader from "./ui/SectionHeader";
 import Badge from "./ui/Badge";
 import StarRating from "./ui/StarRating";
 import { LATEST_REVIEWS } from "../data/landingData";
 import { ReviewItem } from "../types";
+
+interface LatestReviewsProps {
+  reviews?: ReviewItem[];
+}
 
 const ReviewProductImage: React.FC<{
   src: string;
@@ -37,7 +42,11 @@ const ReviewProductImage: React.FC<{
   );
 };
 
-export const LatestReviews: React.FC = () => {
+export const LatestReviews: React.FC<LatestReviewsProps> = ({
+  reviews = LATEST_REVIEWS,
+}) => {
+  const activeReviews =
+    reviews && reviews.length > 0 ? reviews : LATEST_REVIEWS;
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollRight = () => {
@@ -60,42 +69,75 @@ export const LatestReviews: React.FC = () => {
           ref={scrollRef}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 overflow-x-auto sm:overflow-x-visible pb-2 sm:pb-0 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {LATEST_REVIEWS.map((review: ReviewItem) => (
-            <a
-              key={review.id}
-              href={review.href || `#${review.id}`}
-              className="group flex flex-col justify-between p-4 rounded-xl bg-[#0e131f] border border-white/5 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/5 snap-start min-w-[240px] sm:min-w-0"
-            >
-              {/* Product Preview Image */}
-              <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full rounded-lg overflow-hidden bg-slate-900 mb-4 border border-white/5">
-                <ReviewProductImage
-                  src={review.imageUrl}
-                  alt={review.title}
-                  fallbackTitle={review.title}
-                />
-              </div>
+          {activeReviews.map((review: ReviewItem) => {
+            const reviewHref = review.slug
+              ? `/reviews/${review.slug}`
+              : review.href &&
+                (review.href.startsWith("http://") ||
+                  review.href.startsWith("https://"))
+              ? review.href
+              : review.id && !review.id.startsWith("#")
+              ? `/reviews/${review.id}`
+              : review.href || "#";
 
-              {/* Review Content */}
-              <div className="flex flex-col flex-1 justify-between">
-                <div>
-                  <Badge variant="cyan" className="mb-2">
-                    {review.category}
-                  </Badge>
+            const isExternal =
+              reviewHref.startsWith("http://") || reviewHref.startsWith("https://");
 
-                  <h3 className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 leading-snug mb-3">
-                    {review.title}
-                  </h3>
+            const cardClasses =
+              "group flex flex-col justify-between p-4 rounded-xl bg-[#0e131f] border border-white/5 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/5 snap-start min-w-[240px] sm:min-w-0";
+
+            const cardContent = (
+              <>
+                {/* Product Preview Image */}
+                <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full rounded-lg overflow-hidden bg-slate-900 mb-4 border border-white/5">
+                  <ReviewProductImage
+                    src={review.imageUrl}
+                    alt={review.title}
+                    fallbackTitle={review.title}
+                  />
                 </div>
 
-                <div className="pt-2 border-t border-white/5 flex flex-col gap-1.5">
-                  <StarRating rating={review.rating} maxRating={review.maxRating || 5} />
-                  <p className="text-[11px] text-slate-400 font-medium">
-                    {review.date}
-                  </p>
+                {/* Review Content */}
+                <div className="flex flex-col flex-1 justify-between">
+                  <div>
+                    <Badge variant="cyan" className="mb-2">
+                      {review.category}
+                    </Badge>
+
+                    <h3 className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 leading-snug mb-3">
+                      {review.title}
+                    </h3>
+                  </div>
+
+                  <div className="pt-2 border-t border-white/5 flex flex-col gap-1.5">
+                    <StarRating
+                      rating={review.rating}
+                      maxRating={review.maxRating || 5}
+                    />
+                    <p className="text-[11px] text-slate-400 font-medium">
+                      {review.date}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </a>
-          ))}
+              </>
+            );
+
+            return isExternal ? (
+              <a
+                key={review.id}
+                href={reviewHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cardClasses}
+              >
+                {cardContent}
+              </a>
+            ) : (
+              <Link key={review.id} href={reviewHref} className={cardClasses}>
+                {cardContent}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Circular Next Arrow Indicator Matching Mockup */}

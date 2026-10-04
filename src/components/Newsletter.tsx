@@ -2,10 +2,25 @@
 
 import React, { useState } from "react";
 import { NEWSLETTER_DATA } from "../data/landingData";
+import { GlobalSettings } from "../types";
 
-export const Newsletter: React.FC = () => {
+export interface NewsletterProps {
+  heading?: string;
+  subtitle?: string;
+  settings?: GlobalSettings;
+}
+
+export const Newsletter: React.FC<NewsletterProps> = ({
+  heading,
+  subtitle,
+  settings,
+}) => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  const displayHeading =
+    heading || settings?.newsletterHeading || NEWSLETTER_DATA.heading;
+  const displaySubtitle = subtitle || settings?.newsletterSubtitle;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,8 +61,13 @@ export const Newsletter: React.FC = () => {
                 {NEWSLETTER_DATA.badge}
               </span>
               <h3 className="text-xl sm:text-2xl font-black text-white leading-tight">
-                {NEWSLETTER_DATA.heading}
+                {displayHeading}
               </h3>
+              {displaySubtitle && (
+                <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+                  {displaySubtitle}
+                </p>
+              )}
             </div>
           </div>
 

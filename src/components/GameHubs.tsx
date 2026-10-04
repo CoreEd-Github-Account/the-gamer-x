@@ -6,6 +6,10 @@ import SectionHeader from "./ui/SectionHeader";
 import { GAME_HUBS } from "../data/landingData";
 import { GameHubItem } from "../types";
 
+interface GameHubsProps {
+  hubs?: GameHubItem[];
+}
+
 const HubIcon: React.FC<{
   hub: GameHubItem;
 }> = ({ hub }) => {
@@ -40,7 +44,9 @@ const HubIcon: React.FC<{
   );
 };
 
-export const GameHubs: React.FC = () => {
+export const GameHubs: React.FC<GameHubsProps> = ({ hubs = GAME_HUBS }) => {
+  const activeHubs = hubs && hubs.length > 0 ? hubs : GAME_HUBS;
+
   return (
     <section className="py-8 sm:py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader
@@ -50,7 +56,7 @@ export const GameHubs: React.FC = () => {
       />
 
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4 overflow-x-auto pb-2 sm:pb-0 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {GAME_HUBS.map((hub: GameHubItem) => (
+        {activeHubs.map((hub: GameHubItem) => (
           <a
             key={hub.id}
             href={hub.href || `#${hub.id}`}
