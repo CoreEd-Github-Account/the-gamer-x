@@ -20,6 +20,7 @@ import {
 
 const WORDPRESS_API_URL =
   process.env.NEXT_PUBLIC_WORDPRESS_API_URL ||
+  process.env.WORDPRESS_API_URL ||
   "http://gamerx-blog.local/graphql";
 
 export interface GraphQLResponse<T> {
