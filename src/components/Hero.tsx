@@ -18,9 +18,10 @@ export const Hero: React.FC<HeroProps> = ({ slides = HERO_SLIDES }) => {
   const isImgError = currentSlide.imageUrl ? failedImages[currentSlide.imageUrl] : true;
 
   return (
-    <section className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[640px] flex items-end overflow-hidden bg-[#080b11]">
+    <section className="relative w-full flex flex-col sm:flex-row sm:items-end overflow-hidden bg-[#080b11] sm:min-h-[580px] lg:min-h-[640px]">
       {/* Background Graphic & Image with Fallback */}
-      <div className="absolute inset-0 z-0">
+      {/* On mobile: displayed as a full-width widescreen 16:9 banner with zero side cropping. On desktop: full-bleed cover */}
+      <div className="relative sm:absolute inset-0 z-0 w-full aspect-[16/9] sm:aspect-auto sm:h-full overflow-hidden">
         {!isImgError && currentSlide.imageUrl ? (
           <Image
             src={currentSlide.imageUrl}
@@ -46,33 +47,33 @@ export const Hero: React.FC<HeroProps> = ({ slides = HERO_SLIDES }) => {
         )}
 
         {/* Cinematic Multi-layered Vignette & Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#080b11] via-[#080b11]/50 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#080b11]/90 via-[#080b11]/50 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#080b11] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080b11] via-[#080b11]/40 sm:via-[#080b11]/50 to-transparent" />
+        <div className="absolute inset-0 hidden sm:block bg-gradient-to-r from-[#080b11]/90 via-[#080b11]/50 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-16 sm:h-36 bg-gradient-to-t from-[#080b11] to-transparent" />
       </div>
 
       {/* Hero Foreground Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20 pb-12 sm:pb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full -mt-6 sm:mt-0 pt-2 sm:pt-20 pb-10 sm:pb-16">
         <div className="max-w-2xl">
           {/* Label Badge */}
-          <div className="inline-flex items-center gap-2 mb-3">
+          <div className="inline-flex items-center gap-2 mb-2.5 sm:mb-3">
             <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-cyan-400">
               {currentSlide.badge}
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-black text-white tracking-tight leading-[1.08] drop-shadow-md mb-4">
+          <h1 className="text-2xl sm:text-5xl lg:text-[56px] font-black text-white tracking-tight leading-[1.12] sm:leading-[1.08] drop-shadow-md mb-3.5 sm:mb-4">
             {currentSlide.title}
           </h1>
 
           {/* Subtext description */}
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mb-7 font-normal">
+          <p className="text-slate-300 text-xs sm:text-base leading-relaxed max-w-xl mb-6 sm:mb-7 font-normal">
             {currentSlide.description}
           </p>
 
           {/* CTA Action & Slide Number Nav */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
             <a
               href={currentSlide.ctaLink}
               className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-md bg-transparent border border-white/20 text-white hover:bg-white hover:text-black hover:border-white font-bold text-xs uppercase tracking-widest transition-all duration-200 group shadow-lg shadow-black/40 w-fit"
