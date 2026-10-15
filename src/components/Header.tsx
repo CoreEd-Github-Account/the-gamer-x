@@ -1,12 +1,20 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { SITE_INFO, NAV_LINKS } from "../data/landingData";
 
-export const Header: React.FC = () => {
+export interface HeaderProps {
+  logoUrl?: string;
+}
+
+export const Header: React.FC<HeaderProps> = ({ logoUrl }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [logoError, setLogoError] = useState(false);
+
+  const activeLogo = logoUrl || SITE_INFO.logoUrl || "/logo.png";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#080b11]/90 backdrop-blur-md transition-all duration-200">
@@ -14,19 +22,32 @@ export const Header: React.FC = () => {
         <div className="flex items-center justify-between h-16 md:h-18">
           {/* Brand Logo & Wordmark */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-md bg-gradient-to-br from-cyan-400 to-blue-600 shadow-sm shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-shadow">
-              <span className="font-black text-white text-base tracking-tighter">
-                {SITE_INFO.logoLetter}
-              </span>
-              <div className="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-cyan-300 rounded-full ring-2 ring-[#080b11]" />
+            <div className="relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg overflow-hidden border border-cyan-500/30 group-hover:border-cyan-400/60 shadow-md shadow-cyan-500/20 group-hover:shadow-cyan-500/40 bg-[#080b11] transition-all">
+              {!logoError && activeLogo ? (
+                <Image
+                  src={activeLogo}
+                  alt={`${SITE_INFO.name} logo`}
+                  width={40}
+                  height={40}
+                  priority
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                  onError={() => setLogoError(true)}
+                />
+              ) : (
+                <div className="flex items-center justify-center w-full h-full bg-gradient-to-br from-cyan-400 to-blue-600 font-black text-white text-base">
+                  {SITE_INFO.logoLetter}
+                </div>
+              )}
             </div>
-            <div className="flex flex-col">
-              <span className="font-black text-base sm:text-lg tracking-wider text-white leading-none group-hover:text-cyan-400 transition-colors">
-                {SITE_INFO.name}
-              </span>
-              <span className="text-[9px] font-semibold tracking-widest text-slate-400 uppercase mt-0.5">
-                {SITE_INFO.tagline}
-              </span>
+            <div className="flex items-center">
+              <Image
+                src="/images/thegamerx-wordmark.png"
+                alt={SITE_INFO.name}
+                width={160}
+                height={24}
+                priority
+                className="h-5 sm:h-6 md:h-6.5 w-auto object-contain group-hover:brightness-110 transition-all drop-shadow-[0_0_8px_rgba(1,71,252,0.35)]"
+              />
             </div>
           </a>
 

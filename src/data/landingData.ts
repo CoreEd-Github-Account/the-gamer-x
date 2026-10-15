@@ -8,10 +8,17 @@ import {
   GameHubItem,
 } from "../types";
 
-export const SITE_INFO = {
-  name: "gamerX",
-  tagline: "NEWS. INSIGHTS. GAMING.",
-  logoLetter: "g",
+export interface SiteInfo {
+  name: string;
+  tagline?: string;
+  logoLetter: string;
+  logoUrl: string;
+}
+
+export const SITE_INFO: SiteInfo = {
+  name: "TheGamerX",
+  logoLetter: "GX",
+  logoUrl: "/logo.png",
 };
 
 export const NAV_LINKS: NavLink[] = [

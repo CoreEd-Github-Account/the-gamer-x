@@ -13,8 +13,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "gamerX - Gaming News, Reviews & Industry Analysis",
+  title: "TheGamerX - Gaming News, Reviews & Industry Analysis",
   description: "Your ultimate destination for gaming news, insights, reviews and industry analysis.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

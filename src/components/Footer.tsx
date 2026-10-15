@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { SITE_INFO, FOOTER_DATA } from "../data/landingData";
 import { GlobalSettings } from "../types";
 
@@ -98,18 +99,23 @@ export const Footer: React.FC<FooterProps> = ({
             <div>
               {/* Brand Logo */}
               <div className="flex items-center gap-3 mb-3">
-                <div className="relative flex items-center justify-center w-8 h-8 rounded-md bg-gradient-to-br from-cyan-400 to-blue-600 shadow-sm shadow-cyan-500/20">
-                  <span className="font-black text-white text-base tracking-tighter">
-                    {SITE_INFO.logoLetter}
-                  </span>
+                <div className="relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg overflow-hidden border border-cyan-500/30 shadow-md shadow-cyan-500/20 bg-[#080b11]">
+                  <Image
+                    src={settings?.logoUrl || SITE_INFO.logoUrl || "/logo.png"}
+                    alt={`${SITE_INFO.name} logo`}
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div className="flex flex-col">
-                  <span className="font-black text-lg tracking-wider text-white leading-none">
-                    {SITE_INFO.name}
-                  </span>
-                  <span className="text-[9px] font-semibold tracking-widest text-slate-400 uppercase mt-0.5">
-                    {SITE_INFO.tagline}
-                  </span>
+                <div className="flex items-center">
+                  <Image
+                    src="/images/thegamerx-wordmark.png"
+                    alt={SITE_INFO.name}
+                    width={160}
+                    height={24}
+                    className="h-6 w-auto object-contain"
+                  />
                 </div>
               </div>
 

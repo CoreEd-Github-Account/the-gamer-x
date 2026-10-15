@@ -98,6 +98,7 @@ export interface FooterLinkGroup {
 }
 
 export interface GlobalSettings {
+  logoUrl?: string;
   footerAboutText?: string;
   copyrightText?: string;
   twitterLink?: string;
