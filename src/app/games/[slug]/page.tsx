@@ -6,18 +6,22 @@ import type { Metadata } from "next";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import Newsletter from "../../../components/Newsletter";
+import LiveCommentsSection from "../../../components/LiveCommentsSection";
+import { getGlobalSettings } from "../../../lib/wordpress";
 import {
-  getGameBySlug,
-  getAllGameSlugs,
-  getGlobalSettings,
-} from "../../../lib/wordpress";
+  getGameBySlug as getLocalGameBySlug,
+  getAllGameSlugs as getAllLocalGameSlugs,
+  renderMarkdownToHtml,
+} from "../../../lib/games";
+
+export const dynamic = "force-dynamic";
 
 interface GamePageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const slugs = await getAllGameSlugs();
+  const slugs = await getAllLocalGameSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
@@ -25,24 +29,26 @@ export async function generateMetadata({
   params,
 }: GamePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const game = await getGameBySlug(slug);
+  const game = await getLocalGameBySlug(slug);
 
   if (!game) {
     return {
-      title: "Game Not Found | gamerX",
+      title: "Game Not Found | TheGamerX",
     };
   }
 
   return {
-    title: `${game.title} - Trending Game Hub | gamerX`,
-    description: `Explore ${game.title} on gamerX. Get gameplay overviews, news, updates, guides, and community insights.`,
+    title: `${game.title} - Trending Game Hub | TheGamerX`,
+    description:
+      game.description ||
+      `Explore ${game.title} on TheGamerX. Get gameplay overviews, news, updates, guides, and community insights.`,
   };
 }
 
 export default async function GamePage({ params }: GamePageProps) {
   const { slug } = await params;
   const [game, globalSettings] = await Promise.all([
-    getGameBySlug(slug),
+    getLocalGameBySlug(slug),
     getGlobalSettings(),
   ]);
 
@@ -50,13 +56,15 @@ export default async function GamePage({ params }: GamePageProps) {
     notFound();
   }
 
+  const renderedContent = game.content ? await renderMarkdownToHtml(game.content) : "";
+
   return (
-    <div className="min-h-screen flex flex-col bg-[#080b11] text-[#f8fafc] selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="min-h-screen flex flex-col bg-[#080b11] text-[#f8fafc] selection:bg-blue-600/30 selection:text-blue-200">
       <Header />
 
       <main className="flex-1 relative overflow-hidden">
         {/* Ambient background glows */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-cyan-500/10 via-blue-600/5 to-transparent blur-3xl pointer-events-none -z-0" />
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-blue-600/10 via-blue-700/5 to-transparent blur-3xl pointer-events-none -z-0" />
         <div className="absolute top-40 right-10 w-96 h-96 bg-purple-600/5 rounded-full blur-3xl pointer-events-none -z-0" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-16">
@@ -65,26 +73,26 @@ export default async function GamePage({ params }: GamePageProps) {
             <nav className="flex items-center gap-2" aria-label="Breadcrumb">
               <Link
                 href="/"
-                className="hover:text-cyan-400 transition-colors duration-150"
+                className="hover:text-blue-400 transition-colors duration-150"
               >
                 HOME
               </Link>
               <span className="text-slate-600">/</span>
               <Link
                 href="/#trending"
-                className="hover:text-cyan-400 transition-colors duration-150"
+                className="hover:text-blue-400 transition-colors duration-150"
               >
                 TRENDING GAMES
               </Link>
               <span className="text-slate-600">/</span>
-              <span className="text-cyan-400 uppercase font-bold truncate max-w-[200px]">
+              <span className="text-blue-400 uppercase font-bold truncate max-w-[200px]">
                 {game.title}
               </span>
             </nav>
 
             <Link
               href="/#trending"
-              className="inline-flex items-center gap-1.5 text-xs text-slate-300 hover:text-cyan-400 transition-colors group flex-shrink-0"
+              className="inline-flex items-center gap-1.5 text-xs text-slate-300 hover:text-blue-400 transition-colors group flex-shrink-0"
             >
               <span className="transition-transform group-hover:-translate-x-1">
                 &larr;
@@ -96,7 +104,7 @@ export default async function GamePage({ params }: GamePageProps) {
           {/* Game Header & Meta */}
           <header className="mb-8 sm:mb-12">
             <div className="flex flex-wrap items-center gap-3 mb-4">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-black tracking-widest uppercase bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 shadow-[0_0_12px_rgba(6,182,212,0.25)]">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-black tracking-widest uppercase bg-blue-950/60 text-blue-300 border border-blue-500/30 shadow-[0_0_12px_rgba(37,99,235,0.25)]">
                 {game.category || "TRENDING GAME"}
               </span>
 
@@ -119,12 +127,12 @@ export default async function GamePage({ params }: GamePageProps) {
             {/* Author / Hub Details Bar */}
             <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10 text-xs text-slate-400">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-white font-black text-sm shadow-md shadow-cyan-500/20">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-black text-sm shadow-md shadow-blue-500/20">
                   gX
                 </div>
                 <div>
                   <div className="font-bold text-slate-200">
-                    gamerX Games Intelligence
+                    TheGamerX Intelligence
                   </div>
                   <div className="text-[11px] text-slate-500">
                     Verified Game Hub &amp; Live Tracking
@@ -139,12 +147,12 @@ export default async function GamePage({ params }: GamePageProps) {
                 </span>
                 <a
                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                    `${game.title} on gamerX`
+                    `${game.title} on TheGamerX`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Share on X / Twitter"
-                  className="w-8 h-8 rounded-lg bg-slate-900/80 border border-white/10 hover:border-cyan-500/50 hover:text-cyan-400 text-slate-400 flex items-center justify-center transition-all"
+                  className="w-8 h-8 rounded-lg bg-slate-900/80 border border-white/10 hover:border-blue-500/50 hover:text-blue-400 text-slate-400 flex items-center justify-center transition-all"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -152,7 +160,7 @@ export default async function GamePage({ params }: GamePageProps) {
                 </a>
                 <a
                   href={`https://reddit.com/submit?title=${encodeURIComponent(
-                    `${game.title} on gamerX`
+                    `${game.title} on TheGamerX`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -167,9 +175,9 @@ export default async function GamePage({ params }: GamePageProps) {
             </div>
           </header>
 
-          {/* Hero Featured Image */}
+          {/* Hero Featured Poster / Banner Image */}
           {game.imageUrl && (
-            <div className="relative w-full aspect-video sm:aspect-[21/9] rounded-2xl overflow-hidden mb-12 border border-cyan-500/20 shadow-[0_0_40px_rgba(6,182,212,0.1)] bg-slate-900">
+            <div className="relative w-full aspect-video sm:aspect-[21/9] rounded-2xl overflow-hidden mb-12 border border-blue-500/20 shadow-[0_0_40px_rgba(37,99,235,0.1)] bg-slate-900">
               <Image
                 src={game.imageUrl}
                 alt={game.title}
@@ -182,13 +190,47 @@ export default async function GamePage({ params }: GamePageProps) {
             </div>
           )}
 
-          {/* WordPress Article Content */}
+          {/* Rendered Article Content */}
           <article className="relative">
             <div
-              className="story-content"
-              dangerouslySetInnerHTML={{ __html: game.content || "" }}
+              className="story-content prose prose-invert prose-blue max-w-none text-slate-300 leading-relaxed text-sm sm:text-base space-y-5"
+              dangerouslySetInnerHTML={{ __html: renderedContent }}
             />
           </article>
+
+          {/* Discuss on Forum Callout Banner */}
+          <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-blue-950/30 via-[#0e131f] to-[#0e131f] border border-blue-500/30 shadow-lg shadow-blue-500/5 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+            <div>
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                <span className="text-[10px] font-black uppercase tracking-wider text-blue-400">
+                  Game Hub Discussion
+                </span>
+              </div>
+              <h3 className="text-base sm:text-lg font-bold text-white">
+                Discuss {game.title} with fellow gamers
+              </h3>
+              <p className="text-xs text-slate-400 mt-1 max-w-md leading-relaxed">
+                Looking for build guides, boss strategies, or lore discussion? Head over to the community forum.
+              </p>
+            </div>
+            <Link
+              href="/forum"
+              className="flex-shrink-0 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs tracking-wide shadow-md shadow-blue-600/30 hover:shadow-blue-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+              </svg>
+              <span>Discuss on Forum &rarr;</span>
+            </Link>
+          </div>
+
+          {/* Live Comments Section */}
+          <LiveCommentsSection
+            postSlug={game.slug || game.id}
+            postTitle={game.title}
+            category={game.category || "Gaming"}
+          />
 
           {/* Article Footer & Tags */}
           <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
@@ -203,13 +245,13 @@ export default async function GamePage({ params }: GamePageProps) {
                 #TrendingGames
               </span>
               <span className="px-3 py-1 rounded-md text-xs font-semibold bg-slate-900 border border-white/10 text-slate-300">
-                #gamerX
+                #TheGamerX
               </span>
             </div>
 
             <Link
               href="/#trending"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-white/10 hover:border-cyan-500/40 text-xs font-bold text-white uppercase tracking-wider transition-all duration-200"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-white/10 hover:border-blue-500/40 text-xs font-bold text-white uppercase tracking-wider transition-all duration-200"
             >
               <span>&larr; More Trending Games</span>
             </Link>

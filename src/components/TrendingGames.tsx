@@ -60,7 +60,9 @@ export const TrendingGames: React.FC<TrendingGamesProps> = ({
   };
 
   return (
-    <section className="py-8 sm:py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <section id="trending" className="py-8 sm:py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative scroll-mt-24">
+      <span id="trending-games" className="absolute -top-24 left-0 invisible pointer-events-none" />
+      <span id="games" className="absolute -top-24 left-0 invisible pointer-events-none" />
       <SectionHeader
         title="TRENDING GAMES"
         actionText="EXPLORE ALL GAMES"
@@ -95,8 +97,8 @@ export const TrendingGames: React.FC<TrendingGamesProps> = ({
                 <div
                   className={`relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-[#0e131f] transition-all duration-300 ${
                     isFeatured
-                      ? "ring-2 ring-cyan-400 shadow-[0_0_16px_rgba(6,182,212,0.35)]"
-                      : "border border-white/10 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10"
+                      ? "ring-2 ring-blue-500 shadow-[0_0_16px_rgba(37,99,235,0.4)]"
+                      : "border border-white/10 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10"
                   }`}
                 >
                   <GamePosterImage
@@ -107,12 +109,11 @@ export const TrendingGames: React.FC<TrendingGamesProps> = ({
 
                   {/* Highlight Star on First / Featured Card */}
                   {isFeatured && (
-                    <div className="absolute top-2 right-2 z-10 w-5 h-5 rounded-full bg-[#080b11]/80 backdrop-blur-sm flex items-center justify-center text-cyan-400 text-xs shadow-md">
+                    <div className="absolute top-2 right-2 z-10 w-5 h-5 rounded-full bg-[#080b11]/80 backdrop-blur-sm flex items-center justify-center text-blue-400 text-xs shadow-md">
                       &#9733;
                     </div>
                   )}
 
-                  {/* Gradient shadow overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
                 </div>
 
@@ -145,7 +146,7 @@ export const TrendingGames: React.FC<TrendingGamesProps> = ({
         <button
           onClick={scrollRight}
           aria-label="Scroll trending games right"
-          className="absolute -right-2 top-[40%] -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-[#0e131f]/90 hover:bg-cyan-500 text-white hover:text-black border border-white/20 hover:border-cyan-400 flex items-center justify-center shadow-xl backdrop-blur-sm transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
+          className="absolute -right-2 top-[40%] -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-[#0e131f]/90 hover:bg-blue-600 text-white border border-white/20 hover:border-blue-500 flex items-center justify-center shadow-xl backdrop-blur-sm transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
         >
           <svg
             className="w-4 h-4 ml-0.5"
@@ -162,11 +163,11 @@ export const TrendingGames: React.FC<TrendingGamesProps> = ({
           </svg>
         </button>
 
-        {/* Circular Prev Navigation Arrow Button (Subtle/desktop) */}
+        {/* Circular Prev Navigation Arrow Button */}
         <button
           onClick={scrollLeft}
           aria-label="Scroll trending games left"
-          className="hidden md:flex absolute -left-2 top-[40%] -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-[#0e131f]/90 hover:bg-cyan-500 text-white hover:text-black border border-white/20 hover:border-cyan-400 items-center justify-center shadow-xl backdrop-blur-sm transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer opacity-0 group-hover/carousel:opacity-100"
+          className="hidden md:flex absolute -left-2 top-[40%] -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-[#0e131f]/90 hover:bg-blue-600 text-white border border-white/20 hover:border-blue-500 items-center justify-center shadow-xl backdrop-blur-sm transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer opacity-0 group-hover/carousel:opacity-100"
         >
           <svg
             className="w-4 h-4 mr-0.5"

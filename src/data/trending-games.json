@@ -1,0 +1,80 @@
+[
+  {
+    "id": "gta-vi",
+    "slug": "gta-vi",
+    "title": "GTA VI",
+    "category": "Open World Action",
+    "imageUrl": "/images/games/gta-vi.jpg",
+    "isFeatured": true,
+    "description": "Rockstar Games returns to the sun-soaked neon streets of Vice City and beyond in the most anticipated open-world release in gaming history.",
+    "href": "/games/gta-vi",
+    "content": "## Grand Theft Auto VI: The Next Evolutionary Leap in Open Worlds\n\nSet in the sprawling state of Leonida—home to the neon-soaked boulevards of Vice City and the treacherous wetlands of the Grassrivers—**Grand Theft Auto VI** promises the most immersive and reactive living environment ever created by Rockstar Games.\n\n### Living Ecosystems & Next-Gen Physics\n\n- **Dual Protagonist Chemistry**: Follow the criminal saga of Lucia and Jason across high-stakes heists, store robberies, and shifting loyalties.\n- **Unprecedented Crowd Simulation**: Hundreds of autonomous NPCs exhibiting situational awareness, social media livestreams, and reactive behaviors.\n- **Dynamic Weather Systems**: Tropical hurricanes, flood mechanics, and volumetric cloud rendering powered by Rockstar's advanced RAGE engine.\n\n> \"Leonida represents our most ambitious, dense, and physically reactive world to date. Every neighborhood tells a living story.\"\n\n### Platform & Release Intel\n\nGrand Theft Auto VI is slated for release on PlayStation 5 and Xbox Series X|S. Stay connected to **TheGamerX** for continuing updates, map leaks, and verified technical breakdowns."
+  },
+  {
+    "id": "elden-ring",
+    "slug": "elden-ring",
+    "title": "Elden Ring",
+    "category": "Action RPG",
+    "imageUrl": "/images/games/elden-ring.jpg",
+    "isFeatured": false,
+    "description": "FromSoftware's monumental dark-fantasy masterpiece, expanded with the acclaimed Shadow of the Erdtree expansion.",
+    "href": "/games/elden-ring",
+    "content": "## Shadow of the Erdtree & The Lands Between\n\nGuided by Empyrean Miquella, players step into the Realm of Shadow—a land obscured by the Erdtree where the goddess Marika first set foot. **Elden Ring** continues to define the pinnacle of open-world action RPG design.\n\n### Key Highlights\n\n- **Dense Vertical Exploration**: Vast multi-layered underground ruins, scorched ruins, and ancestral peaks.\n- **Expanded Combat Armory**: Eight brand-new weapon types including Hand-to-Hand Arts, Throwing Blades, and Reverse-hand Swords.\n- **Challenging Boss Encounters**: Formidable adversaries testing both build mastery and reflexes."
+  },
+  {
+    "id": "black-myth-wukong",
+    "slug": "black-myth-wukong",
+    "title": "Black Myth: Wukong",
+    "category": "Action RPG",
+    "imageUrl": "/images/games/black-myth-wukong.jpg",
+    "isFeatured": false,
+    "description": "Game Science's breakout mythological spectacle rooted in the classic Journey to the West.",
+    "href": "/games/black-myth-wukong",
+    "content": "## The Destined One Awakens\n\nBuilt on Unreal Engine 5, **Black Myth: Wukong** brings Chinese mythology to life with hyper-detailed character models, visceral staff martial arts, and shapeshifting transformations.\n\n### Highlights\n\n- **Spell Mastery**: Freeze foes with immobilize spells, summon duplicates, and deflect elemental blows with cloud-step techniques.\n- **Mythical Boss Fights**: Face off against ancient yaoguai chiefs and legendary deities.\n- **Global Phenomenon**: Breaking records with over 20 million copies sold across PlayStation 5 and PC."
+  },
+  {
+    "id": "cyberpunk-2077",
+    "slug": "cyberpunk-2077",
+    "title": "Cyberpunk 2077",
+    "category": "Cyberpunk RPG",
+    "imageUrl": "/images/games/cyberpunk-2077.jpg",
+    "isFeatured": false,
+    "description": "CD Projekt Red's definitive dystopian RPG featuring Night City, the Phantom Liberty spy-thriller expansion, and full ray tracing.",
+    "href": "/games/cyberpunk-2077",
+    "content": "## Night City: City of Dreams & Cybernetic Ascension\n\nFollowing the groundbreaking 2.0 update and *Phantom Liberty*, **Cyberpunk 2077** has solidified its place as a technical and narrative tour de force.\n\n### Core Features\n\n- **Dogtown Intrigue**: Navigate an espionage-packed story featuring Solomon Reed in an anarchic walled district.\n- **Revamped Skill Trees**: Fluid cyberware perks, dash mechanics, and vehicular combat.\n- **Next-Gen Graphical Showcase**: Path-traced lighting and DLSS 3.5 ray reconstruction creating photorealistic metropolis vistas."
+  },
+  {
+    "id": "cod-mwiii",
+    "slug": "cod-mwiii",
+    "title": "Call of Duty: MWIII",
+    "category": "First-Person Shooter",
+    "imageUrl": "/images/games/cod-mw3.jpg",
+    "isFeatured": false,
+    "description": "High-octane tactical combat featuring classic multiplayer maps, open combat campaign missions, and fast-paced gunplay.",
+    "href": "/games/cod-mwiii",
+    "content": "## Modern Warfare III: Competitive Multiplayer & Warzone Integration\n\nFeaturing remastered legendary maps from the original MW2, expanded Gunsmith weapon tuning, and non-stop seasonal live events.\n\n### What Defines MWIII\n\n- **Refined Movement Loop**: Slide canceling, Tac-Stance aiming, and fast weapon transitions.\n- **Zombies Extraction**: An open-world PvE undead experience across vast terrain with squad extraction loops."
+  },
+  {
+    "id": "ghost-of-yotei",
+    "slug": "ghost-of-yotei",
+    "title": "Ghost of Yōtei",
+    "category": "Historical Action",
+    "imageUrl": "/images/games/ghost-of-yotei.jpg",
+    "isFeatured": false,
+    "description": "Sucker Punch's breathtaking spiritual successor to Ghost of Tsushima, set around Mount Yōtei in 1603 Japan.",
+    "href": "/games/ghost-of-yotei",
+    "content": "## A New Mask, A New Legend\n\nSet 300 years after the events of Jin Sakai's journey, **Ghost of Yōtei** introduces a new protagonist, Atsu, traversing the untamed wilderness surrounding northern Japan's Mount Yōtei in the year 1603.\n\n### What We Know\n\n- **Evolving Combat Systems**: Master new weaponry including dual katana stances, kusarigama chains, and early matchlock firearms.\n- **Living Northern Wilderness**: Massive visual fidelity gains tailored exclusively for the PlayStation 5 hardware.\n- **Player Autonomy**: Greater storytelling choice and open-ended exploration across dramatic tundras and wildflower meadows."
+  },
+  {
+    "id": "horizon-forbidden-west",
+    "slug": "horizon-forbidden-west",
+    "title": "Horizon Forbidden West",
+    "category": "Action Adventure",
+    "imageUrl": "/images/games/horizon-forbidden-west.jpg",
+    "isFeatured": false,
+    "description": "Aloy journeys through an awe-inspiring post-apocalyptic frontier filled with majestic robotic machines and ancient tribal secrets.",
+    "href": "/games/horizon-forbidden-west",
+    "content": "## Brave the Forbidden West\n\nGuerrilla Games' critically acclaimed sci-fi adventure pushes the Decima engine to astonishing heights across sprawling coastal ruins, submerged cities, and mountainous volcanic expanses.\n\n### Key Highlights\n\n- **Dynamic Robot Ecology**: Hunt, override, and fight alongside complex mechanical behemoths.\n- **Freeform Traversal**: Utilize the Pullcaster, Shieldwing glider, and underwater diving masks to conquer every corner of the frontier.\n- **Burning Shores Expansion**: High-flying combat above the overgrown ruins of futuristic Los Angeles."
+  }
+]
+

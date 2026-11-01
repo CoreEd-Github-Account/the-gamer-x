@@ -12,16 +12,17 @@ import {
   LATEST_STORIES,
   TRENDING_GAMES,
   INDUSTRY_ARTICLES,
-  LATEST_REVIEWS,
-  GAME_HUBS,
   FOOTER_DATA,
   NEWSLETTER_DATA,
 } from "../data/landingData";
 
+export const LATEST_REVIEWS: ReviewItem[] = [];
+export const GAME_HUBS: GameHubItem[] = [];
+
 const WORDPRESS_API_URL =
   process.env.NEXT_PUBLIC_WORDPRESS_API_URL ||
   process.env.WORDPRESS_API_URL ||
-  "http://gamerx-blog.local/graphql";
+  "";
 
 export interface GraphQLResponse<T> {
   data?: T;
@@ -643,6 +644,9 @@ export async function fetchGraphQL<T>(
   query: string,
   variables?: Record<string, unknown>
 ): Promise<T | null> {
+  if (!WORDPRESS_API_URL) {
+    return null;
+  }
   try {
     const res = await fetch(WORDPRESS_API_URL, {
       method: "POST",

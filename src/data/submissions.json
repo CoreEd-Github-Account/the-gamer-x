@@ -1,0 +1,29 @@
+[
+  {
+    "id": "gx-pitch-101",
+    "name": "Marcus Vance",
+    "email": "marcus.vance@gamingjournal.org",
+    "portfolioUrl": "https://marcusvance.tech",
+    "category": "Hardware & Tech",
+    "title": "Why Handheld APUs Are Hitting a Thermal Ceiling: The 25W Stagnation",
+    "pitch": "A deep dive comparing the Steam Deck 2 OLED, ROG Ally X, and rumored Xbox handheld. I have collected thermal imaging and watt-to-frame efficiency charts showing how mobile silicon architecture must change before we see a true generational leap in portable PC gaming.",
+    "samples": "https://marcusvance.tech/benchmarking-ryzen-z1-extreme",
+    "estimatedWords": "1,500 - 2,000 words",
+    "status": "under_review",
+    "createdAt": "2026-10-28T14:32:00.000Z"
+  },
+  {
+    "id": "gx-pitch-102",
+    "name": "Elena Rostova",
+    "email": "elena.r@indiedevchronicle.com",
+    "portfolioUrl": "https://x.com/elenarostova",
+    "category": "Industry Analysis",
+    "title": "The AA Game Studio Survival Guide: How Mid-Budget Developers Are Outmaneuvering $200M Blockbusters",
+    "pitch": "Interviews with 4 independent studio leads who kept their teams under 60 people and profitable in 2025/2026. The piece explores why smaller teams can iterate faster, maintain creative control, and out-perform bloated AAA publishers on Steam.",
+    "samples": "https://indiedevchronicle.com/aa-renaissance-2025",
+    "estimatedWords": "2,000+ words",
+    "status": "pending",
+    "createdAt": "2026-10-31T09:15:00.000Z"
+  }
+]
+

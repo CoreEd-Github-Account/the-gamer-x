@@ -1,0 +1,304 @@
+import { ForumCategory, ForumThread } from "../types";
+
+export const FORUM_CATEGORIES: ForumCategory[] = [
+  {
+    id: "cat-game-hubs",
+    slug: "game-hubs",
+    name: "Game Hubs",
+    description: "Dedicated strategies, builds, boss guides, and lore debates for trending titles.",
+    icon: "🎮",
+    threadCount: 428,
+    accentColor: "#2563eb",
+  },
+  {
+    id: "cat-hardware",
+    slug: "hardware-tech",
+    name: "Hardware & Tech",
+    description: "GPU benchmarks, custom PC builds, handhelds, monitors, and troubleshooting.",
+    icon: "⚡",
+    threadCount: 312,
+    accentColor: "#f59e0b",
+  },
+  {
+    id: "cat-news",
+    slug: "news-leaks",
+    name: "News & Leaks",
+    description: "Breaking insider reports, datamines, trailer breakdowns, and rumors.",
+    icon: "🔥",
+    threadCount: 519,
+    accentColor: "#ef4444",
+  },
+  {
+    id: "cat-industry",
+    slug: "industry-debates",
+    name: "Industry Debates",
+    description: "Game economics, studio layoffs, subscriptions, and executive analysis.",
+    icon: "📊",
+    threadCount: 184,
+    accentColor: "#10b981",
+  },
+  {
+    id: "cat-lounge",
+    slug: "community-lounge",
+    name: "Community Lounge",
+    description: "Battlestation photos, weekend gaming logs, memes, and general chat.",
+    icon: "☕",
+    threadCount: 265,
+    accentColor: "#8b5cf6",
+  },
+];
+
+export const FORUM_THREADS: ForumThread[] = [
+  {
+    id: "thread-welcome",
+    slug: "welcome-to-thegamerx-community",
+    title: "Welcome to TheGamerX Community! Introduce yourself, claim badges & post your rig",
+    category: "Community Lounge",
+    isPinned: true,
+    upvotes: 342,
+    views: 4890,
+    repliesCount: 64,
+    createdAt: "Nov 1, 2026",
+    lastActivity: "2 mins ago",
+    author: {
+      name: "Ubaid_GX",
+      badge: "Staff",
+      badgeColor: "#2563eb",
+      steamId: "TheGamerX_Admin",
+      psnId: "GX_Commander",
+      postCount: 1420,
+    },
+    content: `### Welcome to TheGamerX Official Forums!
+
+We built this space for hardcore gamers, tech enthusiasts, and industry observers who want honest, in-depth discussions without algorithmic noise or spam.
+
+#### Community Pillars:
+- **Respect Fellow Players:** Keep debates spirited but civil. Criticism of games is welcomed; harassment is zero tolerance.
+- **Use Spoiler Tags:** If you are discussing endgame plots or secret bosses, please wrap them in spoilers: \`>!spoiler text goes here!<\`.
+- **Hardware & Troubleshooting:** Feel free to share your benchmarks, PC builds, and troubleshooting tips.
+
+> Drop a comment below sharing:
+> 1. What games you are playing this month
+> 2. Your current gaming platform (PC / PS5 / Xbox / Switch / Handheld)
+> 3. Your favorite all-time franchise
+
+See you on the leaderboards! 🎮`,
+    reactions: {
+      hype: 218,
+      playedIt: 89,
+      rip: 4,
+      insightful: 73,
+    },
+    replies: [
+      {
+        id: "rep-1",
+        author: {
+          name: "ValkyrieRunner",
+          badge: "Day 1 Gamer",
+          badgeColor: "#7c3aed",
+          steamId: "Valkyrie99",
+          postCount: 88,
+        },
+        createdAt: "25 mins ago",
+        content: `Hyped to be here! Currently grinding **Black Myth: Wukong** NG+ and playing **Helldivers 2** on weekends. 
+
+Running an RTX 4080 Super with a Ryzen 7 7800X3D on a 34" ultrawide. Looking forward to comparing benchmarks with everyone on the upcoming RTX 50-series!`,
+        upvotes: 19,
+      },
+      {
+        id: "rep-2",
+        author: {
+          name: "PixelRonin",
+          badge: "Community Member",
+          postCount: 24,
+        },
+        createdAt: "10 mins ago",
+        content: `Finally a dedicated space that connects straight with the news articles! 
+
+Playing through **Metaphor: ReFantazio** right now on PS5. Atlus knocked it out of the park with the UI styling and battle mechanics.`,
+        upvotes: 12,
+      },
+    ],
+  },
+  {
+    id: "thread-gta-vi-pc",
+    slug: "gta-vi-pc-release-window-analysis",
+    title: "GTA VI PC Release Timing: Will Rockstar delay the PC launch to late 2026 or 2027?",
+    category: "News & Leaks",
+    gameTag: "GTA VI",
+    isPinned: true,
+    upvotes: 278,
+    views: 6120,
+    repliesCount: 52,
+    createdAt: "Nov 1, 2026",
+    lastActivity: "8 mins ago",
+    author: {
+      name: "ViceCityWatcher",
+      badge: "Dev Insider",
+      badgeColor: "#059669",
+      steamId: "ViceWatcher",
+      postCount: 310,
+    },
+    content: `With Rockstar confirming Fall 2025 for PS5 and Xbox Series X/S, PC players are once again questioning how long they will have to wait.
+
+### Historical Rockstar PC Release Windows:
+- **GTA IV:** Consoles in April 2008 &rarr; PC in December 2008 (~8 months wait)
+- **GTA V:** Consoles in Sept 2013 &rarr; PS4/XBO in Nov 2014 &rarr; PC in April 2015 (~19 months wait)
+- **Red Dead Redemption 2:** Consoles in Oct 2018 &rarr; PC in Nov 2019 (~13 months wait)
+
+Given the sheer scale of the Leonida map, the dual-character memory streaming architecture, and ray-traced global illumination running natively on PC hardware, a **12 to 14 month delay (Fall 2026)** is the most probable target.
+
+What do you all think? Will Rockstar surprise us with a shorter window or will they double-dip console then PC?`,
+    reactions: {
+      hype: 164,
+      playedIt: 22,
+      rip: 45,
+      insightful: 98,
+    },
+    replies: [
+      {
+        id: "rep-3",
+        author: {
+          name: "RyzenMaster",
+          badge: "Hardware Guru",
+          badgeColor: "#d97706",
+          postCount: 412,
+        },
+        createdAt: "15 mins ago",
+        content: `Take-Two's financial quarters dictate this. They will milk the console holiday 2025 season, announce the PC version around E3/Summer 2026, and ship it Q4 2026 for maximum double-dip revenue. It is practically a clockwork formula.`,
+        upvotes: 38,
+      },
+    ],
+  },
+  {
+    id: "thread-rtx-50-power",
+    slug: "rtx-50-series-power-connectors-vram-speculation",
+    title: "RTX 50-Series Power Connectors & 28Gbps GDDR7: Is your current 850W PSU enough?",
+    category: "Hardware & Tech",
+    gameTag: "Hardware",
+    upvotes: 184,
+    views: 3940,
+    repliesCount: 41,
+    createdAt: "Oct 31, 2026",
+    lastActivity: "18 mins ago",
+    author: {
+      name: "CircuitBreaker",
+      badge: "Hardware Guru",
+      badgeColor: "#d97706",
+      steamId: "CircuitOverload",
+      postCount: 520,
+    },
+    content: `As board partner leaks ramp up, the power requirements for the top-tier Blackwell GPUs are raising eyebrows. 
+
+Rumors point to a redesigned 12V-2x6 connector rated for up to 600W on the flagship, while GDDR7 chips running at 28Gbps generate significant heat density around the VRMs.
+
+If you are planning to upgrade from an RTX 3080 or RTX 2080 Ti:
+1. Ensure your PSU is ATX 3.1 compliant with native 16-pin cabling rather than 3-way pigtail adapters.
+2. A quality 1000W unit will provide the necessary transient spike headroom.
+
+Are you upgrading or holding onto your current rig for another cycle?`,
+    reactions: {
+      hype: 89,
+      playedIt: 14,
+      rip: 12,
+      insightful: 110,
+    },
+    replies: [],
+  },
+  {
+    id: "thread-shadow-erdtree-bosses",
+    slug: "elden-ring-shadow-erdtree-favorite-boss-ranking",
+    title: "Shadow of the Erdtree: Ranking all Remembrance bosses from masterpiece to pure pain",
+    category: "Game Hubs",
+    gameTag: "Elden Ring",
+    upvotes: 215,
+    views: 4500,
+    repliesCount: 78,
+    createdAt: "Oct 30, 2026",
+    lastActivity: "34 mins ago",
+    author: {
+      name: "TarnishedLore",
+      badge: "Pro Reviewer",
+      badgeColor: "#2563eb",
+      steamId: "EldenTarnished",
+      postCount: 195,
+    },
+    content: `Having beaten the DLC three times across pure Strength, Dex/Bleed, and Faith/Arcane builds, here is my definitive combat tier list:
+
+1. **Messmer the Impaler (S Tier):** The best rhythm and visual choreography in modern FromSoft history. Puts your dodge discipline to the test without visual clutter.
+2. **Midra, Lord of Frenzied Flame (A+ Tier):** Spooky mansion buildup, haunting soundtrack, and beautifully deliberate sword sweeps.
+3. **Rellana, Twin Moon Knight (A Tier):** Relentless aggression done right. Pontiff Sulyvahn spiritual successor.
+4. **Promised Consort (B- Tier):** Spectacular Phase 1, but Phase 2 particle brightness is still blinding on HDR displays.
+
+What does your top 3 look like?`,
+    reactions: {
+      hype: 140,
+      playedIt: 180,
+      rip: 56,
+      insightful: 62,
+    },
+    replies: [],
+  },
+  {
+    id: "thread-70-dollar-pricing",
+    slug: "is-70-dollar-pricing-sustainable-or-pushing-gamers-to-indies",
+    title: "With standard AAA games priced at $70, are rising costs accelerating player fatigue?",
+    category: "Industry Debates",
+    upvotes: 156,
+    views: 3120,
+    repliesCount: 36,
+    createdAt: "Oct 29, 2026",
+    lastActivity: "1 hour ago",
+    author: {
+      name: "IndustryEconomist",
+      badge: "Dev Insider",
+      badgeColor: "#059669",
+      postCount: 145,
+    },
+    content: `In 2020, publishers pitched the \$70 price hike as essential to balance inflated dev cycles and ballooning motion capture budgets.
+
+Yet in 2024–2026, we have witnessed:
+- Shorter player retention on \$70 live-service launches.
+- Explosive record-breaking sales for \$30–\$40 independent and mid-tier hits like *Helldivers 2*, *Palworld*, and *Manor Lords*.
+- Backlog paralysis where players wait 6 months for 30% Steam sales.
+
+Has \$70 raised the bar of expectation so high that anything short of a 90+ Metacritic score feels like a poor value proposition?`,
+    reactions: {
+      hype: 44,
+      playedIt: 19,
+      rip: 7,
+      insightful: 135,
+    },
+    replies: [],
+  },
+  {
+    id: "thread-wukong-ng-plus",
+    slug: "black-myth-wukong-ng-plus-secrets-and-stances",
+    title: "Black Myth Wukong: NG+ hidden fourth stance transformation and secret Erlang lore",
+    category: "Game Hubs",
+    gameTag: "Black Myth Wukong",
+    upvotes: 138,
+    views: 2950,
+    repliesCount: 29,
+    createdAt: "Oct 28, 2026",
+    lastActivity: "3 hours ago",
+    author: {
+      name: "StaffDestinedOne",
+      badge: "Community Member",
+      postCount: 65,
+    },
+    content: `If you haven't started NG+ yet, make sure you collect all 6 relics with their 3rd tier activations unlocked. 
+
+Once you defeat the secret Great Sage in NG+ with the full mythical monkey king armor set equipped, your heavy attack unlocks a continuous fourth stance that completely changes the combat pacing.
+
+Let's discuss favorite spirit vessels and spell combinations below!`,
+    reactions: {
+      hype: 92,
+      playedIt: 84,
+      rip: 15,
+      insightful: 48,
+    },
+    replies: [],
+  },
+];
+

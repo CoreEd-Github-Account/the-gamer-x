@@ -48,7 +48,9 @@ export const IndustryAnalysis: React.FC<IndustryAnalysisProps> = ({
     articles && articles.length > 0 ? articles : INDUSTRY_ARTICLES;
 
   return (
-    <section className="py-8 sm:py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="analysis" className="py-8 sm:py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 relative">
+      <span id="industry-analysis" className="absolute -top-24 left-0 invisible pointer-events-none" />
+      <span id="deep-industry-analysis" className="absolute -top-24 left-0 invisible pointer-events-none" />
       <SectionHeader
         title="DEEP INDUSTRY ANALYSIS"
         actionText="VIEW ALL ANALYSIS"
@@ -73,18 +75,18 @@ export const IndustryAnalysis: React.FC<IndustryAnalysisProps> = ({
 
           const cardContent = (
             <>
-              {/* Left Content with Large Cyan Number */}
+              {/* Left Content with Large Blue Number */}
               <div className="lg:col-span-7 flex items-start gap-4 sm:gap-6">
-                <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-cyan-400 tracking-tight font-mono select-none">
+                <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-blue-400 tracking-tight font-mono select-none">
                   {article.number}
                 </span>
 
                 <div className="flex-1 min-w-0">
                   <div className="mb-1.5">
-                    <Badge variant="cyan">{article.category}</Badge>
+                    <Badge variant="blue">{article.category}</Badge>
                   </div>
 
-                  <h3 className="text-base sm:text-lg md:text-xl font-black text-white group-hover:text-cyan-400 transition-colors leading-snug mb-2">
+                  <h3 className="text-base sm:text-lg md:text-xl font-black text-white group-hover:text-blue-400 transition-colors leading-snug mb-2">
                     {article.title}
                   </h3>
 
@@ -100,7 +102,7 @@ export const IndustryAnalysis: React.FC<IndustryAnalysisProps> = ({
 
               {/* Right Banner Image */}
               <div className="lg:col-span-5 w-full">
-                <div className="relative aspect-[16/6] sm:aspect-[16/5] w-full rounded-xl overflow-hidden bg-slate-900 border border-white/10 group-hover:border-cyan-500/40 transition-all duration-300 shadow-lg shadow-black/30">
+                <div className="relative aspect-[16/6] sm:aspect-[16/5] w-full rounded-xl overflow-hidden bg-slate-900 border border-white/10 group-hover:border-blue-500/40 transition-all duration-300 shadow-lg shadow-black/30">
                   <IndustryBannerImage
                     src={article.imageUrl}
                     alt={article.title}

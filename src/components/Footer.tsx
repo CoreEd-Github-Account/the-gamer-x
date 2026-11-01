@@ -99,7 +99,7 @@ export const Footer: React.FC<FooterProps> = ({
             <div>
               {/* Brand Logo */}
               <div className="flex items-center gap-3 mb-3">
-                <div className="relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg overflow-hidden border border-cyan-500/30 shadow-md shadow-cyan-500/20 bg-[#080b11]">
+                <div className="relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg overflow-hidden border border-blue-500/30 shadow-md shadow-blue-500/20 bg-[#080b11]">
                   <Image
                     src={settings?.logoUrl || SITE_INFO.logoUrl || "/logo.png"}
                     alt={`${SITE_INFO.name} logo`}
@@ -134,7 +134,7 @@ export const Footer: React.FC<FooterProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={item.name}
-                  className="w-8 h-8 rounded-lg bg-slate-900 border border-white/10 hover:border-cyan-500/40 text-slate-400 hover:text-cyan-400 flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 shadow-sm"
+                  className="w-8 h-8 rounded-lg bg-slate-900 border border-white/10 hover:border-blue-500/40 text-slate-400 hover:text-blue-400 flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 shadow-sm"
                 >
                   <SocialIcon platform={item.platform} />
                 </a>
@@ -153,7 +153,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-slate-400 hover:text-cyan-400 transition-colors duration-150 inline-block py-0.5 font-medium"
+                      className="text-slate-400 hover:text-blue-400 transition-colors duration-150 inline-block py-0.5 font-medium"
                     >
                       {link.label}
                     </a>

@@ -3,38 +3,50 @@ import Hero from "../components/Hero";
 import LatestStories from "../components/LatestStories";
 import TrendingGames from "../components/TrendingGames";
 import IndustryAnalysis from "../components/IndustryAnalysis";
-import LatestReviews from "../components/LatestReviews";
-import GameHubs from "../components/GameHubs";
+import Hardware from "../components/Hardware";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
-import { getAllLandingData } from "../lib/wordpress";
+import { getGlobalSettings } from "../lib/wordpress";
+import { getHeroSlides } from "../lib/hero";
+import { getStories } from "../lib/stories";
+import { getTrendingGames } from "../lib/games";
+import { getIndustryArticles } from "../lib/industry";
+import { getHardwareItems } from "../lib/hardware";
+
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const data = await getAllLandingData();
+  const [heroSlides, stories, trendingGames, industryArticles, hardwareItems, globalSettings] = await Promise.all([
+    getHeroSlides(),
+    getStories(),
+    getTrendingGames(),
+    getIndustryArticles(),
+    getHardwareItems(),
+    getGlobalSettings(),
+  ]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <Header />
       <main className="flex-1">
-        <Hero slides={data.heroSlides} />
-        <LatestStories stories={data.stories} />
-        <TrendingGames games={data.trendingGames} />
-        <IndustryAnalysis articles={data.industryAnalyses} />
-        <LatestReviews reviews={data.reviews} />
-        <GameHubs hubs={data.gameHubs} />
+        <Hero slides={heroSlides} />
+        <LatestStories stories={stories} />
+        <TrendingGames games={trendingGames} />
+        <IndustryAnalysis articles={industryArticles} />
+        <Hardware items={hardwareItems} />
         <Newsletter
-          heading={data.globalSettings.newsletterHeading}
-          subtitle={data.globalSettings.newsletterSubtitle}
-          settings={data.globalSettings}
+          heading={globalSettings.newsletterHeading}
+          subtitle={globalSettings.newsletterSubtitle}
+          settings={globalSettings}
         />
       </main>
       <Footer
-        aboutText={data.globalSettings.footerAboutText}
-        copyrightText={data.globalSettings.copyrightText}
-        twitterLink={data.globalSettings.twitterLink}
-        discordLink={data.globalSettings.discordLink}
-        youtubeLink={data.globalSettings.youtubeLink}
-        settings={data.globalSettings}
+        aboutText={globalSettings.footerAboutText}
+        copyrightText={globalSettings.copyrightText}
+        twitterLink={globalSettings.twitterLink}
+        discordLink={globalSettings.discordLink}
+        youtubeLink={globalSettings.youtubeLink}
+        settings={globalSettings}
       />
     </div>
   );

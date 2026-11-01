@@ -4,8 +4,6 @@ import {
   Story,
   TrendingGame,
   IndustryArticle,
-  ReviewItem,
-  GameHubItem,
 } from "../types";
 
 export interface SiteInfo {
@@ -22,13 +20,12 @@ export const SITE_INFO: SiteInfo = {
 };
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "NEWS", href: "#news", isActive: true },
-  { label: "REVIEWS", href: "#reviews" },
-  { label: "GUIDES", href: "#guides" },
-  { label: "INDUSTRY", href: "#industry" },
-  { label: "HARDWARE", href: "#hardware" },
-  { label: "FEATURES", href: "#features" },
-  { label: "DEALS", href: "#deals" },
+  { label: "LATEST STORIES", href: "/#latest-stories", isActive: true },
+  { label: "TRENDING", href: "/#trending" },
+  { label: "ANALYSIS", href: "/#analysis" },
+  { label: "FORUM", href: "/forum" },
+  { label: "HARDWARE", href: "/#hardware" },
+  { label: "WRITE FOR US", href: "/write-for-us" },
 ];
 
 export const HERO_SLIDES: HeroSlide[] = [
@@ -213,119 +210,6 @@ export const INDUSTRY_ARTICLES: IndustryArticle[] = [
   },
 ];
 
-export const LATEST_REVIEWS: ReviewItem[] = [
-  {
-    id: "rtx-5090",
-    slug: "rtx-5090",
-    category: "HARDWARE REVIEW",
-    title: "NVIDIA RTX 5090 Review",
-    rating: 4.8,
-    maxRating: 5,
-    date: "May 6, 2025",
-    imageUrl: "/images/reviews/rtx-5090.jpg",
-    href: "/reviews/rtx-5090",
-  },
-  {
-    id: "ps5-pro",
-    slug: "ps5-pro",
-    category: "CONSOLE REVIEW",
-    title: "PlayStation 5 Pro Review",
-    rating: 4.7,
-    maxRating: 5,
-    date: "May 5, 2025",
-    imageUrl: "/images/reviews/ps5-pro.jpg",
-    href: "/reviews/ps5-pro",
-  },
-  {
-    id: "asus-rog-oled",
-    slug: "asus-rog-oled",
-    category: "MONITOR REVIEW",
-    title: "ASUS ROG Swift OLED PG32UCDM Review",
-    rating: 4.6,
-    maxRating: 5,
-    date: "May 5, 2025",
-    imageUrl: "/images/reviews/asus-oled.jpg",
-    href: "/reviews/asus-rog-oled",
-  },
-  {
-    id: "dualsense-edge",
-    slug: "dualsense-edge",
-    category: "ACCESSORY REVIEW",
-    title: "DualSense Edge Controller Review",
-    rating: 4.5,
-    maxRating: 5,
-    date: "May 3, 2025",
-    imageUrl: "/images/reviews/dualsense-edge.jpg",
-    href: "/reviews/dualsense-edge",
-  },
-];
-export const GAME_HUBS: GameHubItem[] = [
-  {
-    id: "gta-vi",
-    name: "GTA VI",
-    imageUrl: "/images/hubs/gta-vi.png",
-    initials: "VI",
-    accentColor: "#ec4899",
-    href: "#hub-gta-vi",
-  },
-  {
-    id: "minecraft",
-    name: "Minecraft",
-    imageUrl: "/images/hubs/minecraft.png",
-    initials: "MC",
-    accentColor: "#22c55e",
-    href: "#hub-minecraft",
-  },
-  {
-    id: "valorant",
-    name: "Valorant",
-    imageUrl: "/images/hubs/valorant.png",
-    initials: "V",
-    accentColor: "#ef4444",
-    href: "#hub-valorant",
-  },
-  {
-    id: "elden-ring",
-    name: "Elden Ring",
-    imageUrl: "/images/hubs/elden-ring.png",
-    initials: "ER",
-    accentColor: "#eab308",
-    href: "#hub-elden-ring",
-  },
-  {
-    id: "marvel-rivals",
-    name: "Marvel Rivals",
-    imageUrl: "/images/hubs/marvel-rivals.png",
-    initials: "MR",
-    accentColor: "#38bdf8",
-    href: "#hub-marvel-rivals",
-  },
-  {
-    id: "cyberpunk-2077",
-    name: "Cyberpunk 2077",
-    imageUrl: "/images/hubs/cyberpunk-2077.png",
-    initials: "CP",
-    accentColor: "#facc15",
-    href: "#hub-cyberpunk-2077",
-  },
-  {
-    id: "warzone",
-    name: "Warzone",
-    imageUrl: "/images/hubs/warzone.png",
-    initials: "WZ",
-    accentColor: "#f97316",
-    href: "#hub-warzone",
-  },
-  {
-    id: "fortnite",
-    name: "Fortnite",
-    imageUrl: "/images/hubs/fortnite.png",
-    initials: "F",
-    accentColor: "#a855f7",
-    href: "#hub-fortnite",
-  },
-];
-
 export const NEWSLETTER_DATA = {
   badge: "JOIN 45,000+ GAMERS",
   heading: "Get the best gaming news, analysis & exclusive insights delivered to your inbox.",
@@ -339,7 +223,7 @@ export const NEWSLETTER_DATA = {
 };
 
 export const FOOTER_DATA = {
-  mission: "Your ultimate destination for gaming news, insights, reviews and industry analysis.",
+  mission: "Your ultimate destination for gaming news, insights, and industry analysis.",
   socialLinks: [
     { name: "Twitter", href: "https://twitter.com", platform: "twitter" as const },
     { name: "YouTube", href: "https://youtube.com", platform: "youtube" as const },
@@ -350,19 +234,18 @@ export const FOOTER_DATA = {
     {
       title: "EXPLORE",
       links: [
-        { label: "News", href: "#news" },
-        { label: "Reviews", href: "#reviews" },
-        { label: "Guides", href: "#guides" },
-        { label: "Industry", href: "#industry" },
+        { label: "Latest Stories", href: "#news" },
+        { label: "Trending", href: "#trending" },
+        { label: "Industry Analysis", href: "#analysis" },
         { label: "Hardware", href: "#hardware" },
         { label: "Features", href: "#features" },
-        { label: "Deals", href: "#deals" },
       ],
     },
     {
       title: "COMPANY",
       links: [
         { label: "About Us", href: "#about" },
+        { label: "Write for Us", href: "/write-for-us" },
         { label: "Contact", href: "#contact" },
         { label: "Advertise", href: "#advertise" },
         { label: "Careers", href: "#careers" },
@@ -377,5 +260,5 @@ export const FOOTER_DATA = {
       ],
     },
   ],
-  copyright: "© 2025 gamerX. All rights reserved.",
+  copyright: "© 2026 TheGamerX. All rights reserved.",
 };

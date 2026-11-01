@@ -11,7 +11,7 @@ export const StarRating: React.FC<StarRatingProps> = ({
 }) => {
   return (
     <div className="flex items-center gap-2" aria-label={`Rating: ${rating} out of ${maxRating}`}>
-      <div className="flex items-center gap-0.5 text-cyan-400">
+      <div className="flex items-center gap-0.5 text-blue-500">
         {Array.from({ length: maxRating }).map((_, index) => {
           const filled = index < Math.floor(rating);
           const half = !filled && index < rating;
@@ -20,9 +20,9 @@ export const StarRating: React.FC<StarRatingProps> = ({
               key={index}
               className={`w-3.5 h-3.5 ${
                 filled
-                  ? "text-cyan-400 fill-cyan-400"
+                  ? "text-blue-500 fill-blue-500"
                   : half
-                  ? "text-cyan-400 fill-cyan-400/50"
+                  ? "text-blue-500 fill-blue-500/50"
                   : "text-slate-600 fill-transparent stroke-slate-600"
               }`}
               viewBox="0 0 20 20"

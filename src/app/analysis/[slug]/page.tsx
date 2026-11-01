@@ -6,18 +6,22 @@ import type { Metadata } from "next";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import Newsletter from "../../../components/Newsletter";
+import LiveCommentsSection from "../../../components/LiveCommentsSection";
+import { getGlobalSettings } from "../../../lib/wordpress";
 import {
-  getAnalysisBySlug,
-  getAllAnalysisSlugs,
-  getGlobalSettings,
-} from "../../../lib/wordpress";
+  getAnalysisBySlug as getLocalAnalysisBySlug,
+  getAllAnalysisSlugs as getAllLocalAnalysisSlugs,
+  renderMarkdownToHtml,
+} from "../../../lib/industry";
+
+export const dynamic = "force-dynamic";
 
 interface AnalysisPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const slugs = await getAllAnalysisSlugs();
+  const slugs = await getAllLocalAnalysisSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
@@ -25,18 +29,18 @@ export async function generateMetadata({
   params,
 }: AnalysisPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = await getAnalysisBySlug(slug);
+  const article = await getLocalAnalysisBySlug(slug);
 
   if (!article) {
     return {
-      title: "Analysis Not Found | gamerX",
+      title: "Analysis Not Found | TheGamerX",
     };
   }
 
   return {
-    title: `${article.title} - Industry Analysis | gamerX`,
+    title: `${article.title} - Industry Analysis | TheGamerX`,
     description:
-      article.excerpt ||
+      article.description ||
       `Read our in-depth gaming industry analysis on ${article.title}. Uncover market shifts, tech breakthroughs, and economic trends.`,
   };
 }
@@ -44,7 +48,7 @@ export async function generateMetadata({
 export default async function AnalysisPage({ params }: AnalysisPageProps) {
   const { slug } = await params;
   const [article, globalSettings] = await Promise.all([
-    getAnalysisBySlug(slug),
+    getLocalAnalysisBySlug(slug),
     getGlobalSettings(),
   ]);
 
@@ -52,13 +56,15 @@ export default async function AnalysisPage({ params }: AnalysisPageProps) {
     notFound();
   }
 
+  const renderedContent = article.content ? await renderMarkdownToHtml(article.content) : "";
+
   return (
-    <div className="min-h-screen flex flex-col bg-[#080b11] text-[#f8fafc] selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="min-h-screen flex flex-col bg-[#080b11] text-[#f8fafc] selection:bg-blue-600/30 selection:text-blue-200">
       <Header />
 
       <main className="flex-1 relative overflow-hidden">
         {/* Ambient background glows */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-blue-600/10 via-cyan-500/5 to-transparent blur-3xl pointer-events-none -z-0" />
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-blue-600/10 via-blue-700/5 to-transparent blur-3xl pointer-events-none -z-0" />
         <div className="absolute top-40 right-10 w-96 h-96 bg-indigo-600/5 rounded-full blur-3xl pointer-events-none -z-0" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-16">
@@ -67,26 +73,26 @@ export default async function AnalysisPage({ params }: AnalysisPageProps) {
             <nav className="flex items-center gap-2" aria-label="Breadcrumb">
               <Link
                 href="/"
-                className="hover:text-cyan-400 transition-colors duration-150"
+                className="hover:text-blue-400 transition-colors duration-150"
               >
                 HOME
               </Link>
               <span className="text-slate-600">/</span>
               <Link
                 href="/#analysis"
-                className="hover:text-cyan-400 transition-colors duration-150"
+                className="hover:text-blue-400 transition-colors duration-150"
               >
                 INDUSTRY ANALYSIS
               </Link>
               <span className="text-slate-600">/</span>
-              <span className="text-cyan-400 uppercase font-bold truncate max-w-[200px]">
+              <span className="text-blue-400 uppercase font-bold truncate max-w-[200px]">
                 {article.category}
               </span>
             </nav>
 
             <Link
               href="/#analysis"
-              className="inline-flex items-center gap-1.5 text-xs text-slate-300 hover:text-cyan-400 transition-colors group flex-shrink-0"
+              className="inline-flex items-center gap-1.5 text-xs text-slate-300 hover:text-blue-400 transition-colors group flex-shrink-0"
             >
               <span className="transition-transform group-hover:-translate-x-1">
                 &larr;
@@ -98,84 +104,50 @@ export default async function AnalysisPage({ params }: AnalysisPageProps) {
           {/* Article Header & Meta */}
           <header className="mb-8 sm:mb-12">
             <div className="flex flex-wrap items-center gap-3 mb-4">
-              {article.number && (
-                <span className="inline-flex items-center justify-center font-mono text-[11px] font-bold px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-                  {article.number}
-                </span>
-              )}
-
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-black tracking-widest uppercase bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 shadow-[0_0_12px_rgba(6,182,212,0.25)]">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-black tracking-widest uppercase bg-blue-950/60 text-blue-300 border border-blue-500/30 shadow-[0_0_12px_rgba(37,99,235,0.25)]">
                 {article.category}
               </span>
 
-              {article.readTime && (
-                <span className="text-xs text-slate-400 flex items-center gap-1.5">
-                  <svg
-                    className="w-3.5 h-3.5 text-slate-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  {article.readTime}
-                </span>
-              )}
+              <span className="text-xs text-slate-400 font-mono">
+                Report #{article.number}
+              </span>
 
-              {article.date && (
-                <>
-                  <span className="text-slate-600">&bull;</span>
-                  <span className="text-xs text-slate-400 flex items-center gap-1.5">
-                    <svg
-                      className="w-3.5 h-3.5 text-slate-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                    {article.date}
-                  </span>
-                </>
-              )}
+              <span className="text-slate-600">&bull;</span>
+
+              <span className="text-xs text-slate-400 flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-blue-400" />
+                {article.date}
+              </span>
+
+              <span className="text-slate-600">&bull;</span>
+
+              <span className="text-xs text-slate-400">
+                {article.readTime}
+              </span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.15] mb-6">
               {article.title}
             </h1>
 
-            {/* Executive Summary / Excerpt Box */}
-            {article.excerpt && (
-              <div className="p-4 sm:p-5 rounded-xl bg-slate-900/70 border-l-4 border-cyan-500 border-r border-t border-b border-white/10 text-slate-300 text-sm sm:text-base leading-relaxed mb-6 backdrop-blur-sm">
-                <span className="text-cyan-400 font-bold uppercase tracking-wider text-xs block mb-1">
-                  Executive Takeaway
-                </span>
-                {article.excerpt}
-              </div>
+            {article.description && (
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl mb-6 font-normal">
+                {article.description}
+              </p>
             )}
 
-            {/* Author / Editorial Bar */}
+            {/* Author / Desk Details Bar */}
             <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10 text-xs text-slate-400">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center text-white font-black text-sm shadow-md shadow-cyan-500/20">
-                  gX
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-black text-sm shadow-md shadow-blue-500/20">
+                  GX
                 </div>
                 <div>
                   <div className="font-bold text-slate-200">
-                    gamerX Industry Analysis Desk
+                    TheGamerX Intelligence Desk
                   </div>
                   <div className="text-[11px] text-slate-500">
-                    Market Research &amp; Strategic Insights
+                    Strategic Market Analysis &amp; Industry Metrics
                   </div>
                 </div>
               </div>
@@ -187,12 +159,12 @@ export default async function AnalysisPage({ params }: AnalysisPageProps) {
                 </span>
                 <a
                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                    `${article.title} via gamerX`
+                    `${article.title} via TheGamerX`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Share on X / Twitter"
-                  className="w-8 h-8 rounded-lg bg-slate-900/80 border border-white/10 hover:border-cyan-500/50 hover:text-cyan-400 text-slate-400 flex items-center justify-center transition-all"
+                  className="w-8 h-8 rounded-lg bg-slate-900/80 border border-white/10 hover:border-blue-500/50 hover:text-blue-400 text-slate-400 flex items-center justify-center transition-all"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -200,7 +172,7 @@ export default async function AnalysisPage({ params }: AnalysisPageProps) {
                 </a>
                 <a
                   href={`https://reddit.com/submit?title=${encodeURIComponent(
-                    `${article.title} via gamerX`
+                    `${article.title} via TheGamerX`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -215,9 +187,9 @@ export default async function AnalysisPage({ params }: AnalysisPageProps) {
             </div>
           </header>
 
-          {/* Hero Featured Image */}
+          {/* Hero Featured Widescreen Banner Image */}
           {article.imageUrl && (
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-12 border border-cyan-500/20 shadow-[0_0_40px_rgba(6,182,212,0.1)] bg-slate-900">
+            <div className="relative w-full aspect-video sm:aspect-[21/9] rounded-2xl overflow-hidden mb-12 border border-blue-500/20 shadow-[0_0_40px_rgba(37,99,235,0.1)] bg-slate-900">
               <Image
                 src={article.imageUrl}
                 alt={article.title}
@@ -230,13 +202,47 @@ export default async function AnalysisPage({ params }: AnalysisPageProps) {
             </div>
           )}
 
-          {/* WordPress Article Content */}
+          {/* Rendered Markdown Article Content */}
           <article className="relative">
             <div
-              className="story-content"
-              dangerouslySetInnerHTML={{ __html: article.content || "" }}
+              className="story-content prose prose-invert prose-blue max-w-none text-slate-300 leading-relaxed text-sm sm:text-base space-y-5"
+              dangerouslySetInnerHTML={{ __html: renderedContent }}
             />
           </article>
+
+          {/* Discuss on Forum Callout Banner */}
+          <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-blue-950/30 via-[#0e131f] to-[#0e131f] border border-blue-500/30 shadow-lg shadow-blue-500/5 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+            <div>
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                <span className="text-[10px] font-black uppercase tracking-wider text-blue-400">
+                  Industry Debate
+                </span>
+              </div>
+              <h3 className="text-base sm:text-lg font-bold text-white">
+                Join the debate on this market analysis
+              </h3>
+              <p className="text-xs text-slate-400 mt-1 max-w-md leading-relaxed">
+                What does this mean for developers and players? Share your perspective with the community on our forums.
+              </p>
+            </div>
+            <Link
+              href="/forum"
+              className="flex-shrink-0 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs tracking-wide shadow-md shadow-blue-600/30 hover:shadow-blue-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+              </svg>
+              <span>Discuss on Forum &rarr;</span>
+            </Link>
+          </div>
+
+          {/* Live Comments Section */}
+          <LiveCommentsSection
+            postSlug={article.slug || article.id}
+            postTitle={article.title}
+            category={article.category}
+          />
 
           {/* Article Footer & Tags */}
           <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
@@ -248,18 +254,18 @@ export default async function AnalysisPage({ params }: AnalysisPageProps) {
                 #{article.category}
               </span>
               <span className="px-3 py-1 rounded-md text-xs font-semibold bg-slate-900 border border-white/10 text-slate-300">
-                #IndustryInsights
+                #IndustryAnalysis
               </span>
               <span className="px-3 py-1 rounded-md text-xs font-semibold bg-slate-900 border border-white/10 text-slate-300">
-                #gamerX
+                #TheGamerX
               </span>
             </div>
 
             <Link
               href="/#analysis"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-white/10 hover:border-cyan-500/40 text-xs font-bold text-white uppercase tracking-wider transition-all duration-200"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-white/10 hover:border-blue-500/40 text-xs font-bold text-white uppercase tracking-wider transition-all duration-200"
             >
-              <span>&larr; More Industry Reports</span>
+              <span>&larr; More Analysis Reports</span>
             </Link>
           </div>
         </div>

@@ -21,8 +21,14 @@ const config: Config = {
         },
         border: "#1e293b",
         accent: {
-          DEFAULT: "#0ea5e9",
-          hover: "#38bdf8",
+          DEFAULT: "#2563eb",
+          hover: "#3b82f6",
+        },
+        brand: {
+          DEFAULT: "#2563eb",
+          hover: "#1d4ed8",
+          light: "#3b82f6",
+          dark: "#1e40af",
         },
         muted: {
           foreground: "#94a3b8",

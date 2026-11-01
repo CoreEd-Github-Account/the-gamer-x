@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { HERO_SLIDES } from "../data/landingData";
 import { HeroSlide } from "../types";
 
@@ -20,7 +21,6 @@ export const Hero: React.FC<HeroProps> = ({ slides = HERO_SLIDES }) => {
   return (
     <section className="relative w-full flex flex-col sm:flex-row sm:items-end overflow-hidden bg-[#080b11] sm:min-h-[580px] lg:min-h-[640px]">
       {/* Background Graphic & Image with Fallback */}
-      {/* On mobile: displayed as a full-width widescreen 16:9 banner with zero side cropping. On desktop: full-bleed cover */}
       <div className="relative sm:absolute inset-0 z-0 w-full aspect-[16/9] sm:aspect-auto sm:h-full overflow-hidden">
         {!isImgError && currentSlide.imageUrl ? (
           <Image
@@ -39,10 +39,9 @@ export const Hero: React.FC<HeroProps> = ({ slides = HERO_SLIDES }) => {
             className="object-cover object-center scale-100 transition-transform duration-700 ease-out"
           />
         ) : (
-          /* Rich CSS Gradient Fallback matching Vice City / Cyberpunk Sunset */
           <div className="w-full h-full bg-gradient-to-br from-[#121829] via-[#1c142b] to-[#080b11]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(236,72,153,0.18),transparent_50%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_20%,rgba(6,182,212,0.15),transparent_40%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_20%,rgba(37,99,235,0.18),transparent_40%)]" />
           </div>
         )}
 
@@ -57,7 +56,7 @@ export const Hero: React.FC<HeroProps> = ({ slides = HERO_SLIDES }) => {
         <div className="max-w-2xl">
           {/* Label Badge */}
           <div className="inline-flex items-center gap-2 mb-2.5 sm:mb-3">
-            <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-cyan-400">
+            <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-blue-400">
               {currentSlide.badge}
             </span>
           </div>
@@ -74,15 +73,19 @@ export const Hero: React.FC<HeroProps> = ({ slides = HERO_SLIDES }) => {
 
           {/* CTA Action & Slide Number Nav */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-            <a
-              href={currentSlide.ctaLink}
+            <Link
+              href={
+                currentSlide.ctaLink && !currentSlide.ctaLink.startsWith("#")
+                  ? currentSlide.ctaLink
+                  : `/stories/${currentSlide.slug || currentSlide.id}`
+              }
               className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-md bg-transparent border border-white/20 text-white hover:bg-white hover:text-black hover:border-white font-bold text-xs uppercase tracking-widest transition-all duration-200 group shadow-lg shadow-black/40 w-fit"
             >
               <span>{currentSlide.ctaText}</span>
               <span className="transform transition-transform duration-200 group-hover:translate-x-1">
                 &rarr;
               </span>
-            </a>
+            </Link>
 
             {/* Slide Pagination Indicator */}
             <div
@@ -104,14 +107,14 @@ export const Hero: React.FC<HeroProps> = ({ slides = HERO_SLIDES }) => {
                     <span
                       className={`text-xs font-mono font-bold transition-colors ${
                         isActive
-                          ? "text-cyan-400"
+                          ? "text-blue-400"
                           : "text-slate-500 hover:text-slate-300"
                       }`}
                     >
                       {slide.number}
                     </span>
                     {isActive && (
-                      <span className="w-8 sm:w-10 h-0.5 bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
+                      <span className="w-8 sm:w-10 h-0.5 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
                     )}
                   </button>
                 );

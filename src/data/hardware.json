@@ -1,0 +1,55 @@
+[
+  {
+    "id": "hw-rtx-5090",
+    "slug": "rtx-5090-blackwell-architectural-breakdown",
+    "title": "RTX 5090 Architectural Breakdown: Blackwell, 32GB GDDR7 & 600W Power Analysis",
+    "category": "GPUs & CPUs",
+    "specsBadge": "RTX 5090 • 32GB GDDR7 • 28Gbps",
+    "rating": "9.8 / 10 Flagship Monster",
+    "date": "November 2026",
+    "readTime": "7 min read",
+    "imageUrl": "/images/reviews/rtx-5090.jpg",
+    "description": "Deep architectural dive into NVIDIA's Blackwell GB202 silicon, memory bandwidth records, and 4K 144FPS ray tracing benchmarks.",
+    "isFeatured": true,
+    "content": "### The Next Frontier in Silicon Performance\n\nNVIDIA's flagship **GeForce RTX 5090** represents the biggest architectural shift since the debut of Ada Lovelace in 2022. Powered by the **GB202** Blackwell monolithic die, this graphics card pushes compute density and memory throughput to unprecedented heights.\n\n#### Key Architectural Specs:\n- **CUDA Cores:** 21,760 Blackwell Streaming Multiprocessors\n- **VRAM:** 32GB GDDR7 running across a 512-bit bus at 28Gbps\n- **Total Memory Bandwidth:** 1,792 GB/s (~70% higher than RTX 4090)\n- **TDP / Power Budget:** Up to 600W peak via revised 12V-2x6 connector\n- **Display Output:** Native DisplayPort 2.1a UHBR20 support\n\n---\n\n### 4K Ray Tracing & Path Tracing Benchmarks\n\nIn full ray-traced workloads (*Cyberpunk 2077: Phantom Liberty* Overdrive Mode and *Black Myth: Wukong* Full Path Tracing), the RTX 5090 exhibits an average **58% uplift over the RTX 4090** at native 4K resolution.\n\n| Game Title (4K Max RT) | RTX 4090 (Native) | RTX 5090 (Native) | 5090 + DLSS 4 Quality |\n| :--- | :--- | :--- | :--- |\n| **Cyberpunk 2077 Overdrive** | 22 FPS | 38 FPS | 114 FPS |\n| **Black Myth: Wukong (Cinematic)** | 28 FPS | 47 FPS | 128 FPS |\n| **Alan Wake 2 Path Tracing** | 26 FPS | 44 FPS | 108 FPS |\n| **Metro Exodus Enhanced** | 82 FPS | 134 FPS | 185 FPS |\n\n> **Verdict:** The RTX 5090 is an absolute titan for hardcore enthusiasts and 4K 240Hz OLED setups. However, ensure you have an ATX 3.1 compliant 1000W+ PSU before upgrading."
+  },
+  {
+    "id": "hw-ps5-pro",
+    "slug": "ps5-pro-enhanced-ray-tracing-pssr-deep-dive",
+    "title": "PlayStation 5 Pro In-Depth: Mark Cerny's PSSR AI Upscaling & 67% GPU Boost",
+    "category": "Consoles",
+    "specsBadge": "PSSR • 60FPS Ray Tracing • 2TB SSD",
+    "rating": "9.2 / 10 Next-Gen Benchmark",
+    "date": "October 2026",
+    "readTime": "5 min read",
+    "imageUrl": "/images/reviews/ps5-pro.jpg",
+    "description": "How machine-learning upscaling and upgraded compute units finally bring 60FPS fidelity mode to marquee console exclusives.",
+    "content": "### Bridging the Gap to True 60FPS Fidelity\n\nFor years, console gamers were forced to choose between **Fidelity Mode (30FPS with high graphics)** or **Performance Mode (60FPS with blurry upscaling)**.\n\nWith the **PlayStation 5 Pro**, Sony aims to eliminate that compromise through three hardware pillars:\n\n1. **Larger GPU:** 67% more compute units and 28% faster memory bandwidth deliver up to 45% faster raw rendering.\n2. **Advanced Ray Tracing:** 2x to 3x ray-bounce calculation speed thanks to hardware-level intersection engines.\n3. **PSSR (PlayStation Spectral Super Resolution):** Sony's custom AI machine learning model trained specifically on game geometry and temporal data.\n\n---\n\n### Performance in Marquee Titles:\n- **Marvel's Spider-Man 2:** Delivers full Ray Tracing reflections and dense pedestrian crowds locked at a pristine 60FPS.\n- **Final Fantasy VII Rebirth:** PSSR completely resolves the soft Vaseline-like blurriness that plagued the original Performance Mode.\n- **Alan Wake 2:** Adds ray-traced reflections on water surfaces while retaining fluid camera tracking."
+  },
+  {
+    "id": "hw-asus-oled",
+    "slug": "asus-rog-swift-oled-32-inch-4k-240hz-benchmark",
+    "title": "ASUS ROG Swift 32\" 4K 240Hz OLED: The Ultimate Display for Competitive Gaming",
+    "category": "Peripherals & Monitors",
+    "specsBadge": "32\" QD-OLED • 4K 240Hz • 0.03ms",
+    "rating": "9.6 / 10 Editor's Choice",
+    "date": "October 2026",
+    "readTime": "6 min read",
+    "imageUrl": "/images/reviews/asus-oled.jpg",
+    "description": "Third-generation QD-OLED panel delivers virtually instantaneous response times, infinite contrast, and custom heatsink cooling.",
+    "content": "### The Holy Grail of Gaming Monitors\n\nThe **ASUS ROG Swift PG32UCDM** is widely regarded as the pinnacle of modern gaming monitors. Combining a 31.5-inch 4K resolution QD-OLED panel with a blisteringly fast 240Hz refresh rate, it delivers unmatched clarity.\n\n#### Panel Highlights:\n- **Response Time:** 0.03ms GtG (virtually zero ghosting or motion smear)\n- **Color Gamut:** 99% DCI-P3 coverage with Delta E < 2 factory calibration\n- **Thermal Management:** Custom graphene rear film and dedicated passive heatsink to prevent OLED burn-in\n- **Connectivity:** HDMI 2.1, DisplayPort 1.4 with DSC, and 90W USB-C Power Delivery\n\nWhether tracking fast targets in *Counter-Strike 2* or admiring neon reflections in *Cyberpunk 2077*, the contrast ratio and motion clarity are second to none."
+  },
+  {
+    "id": "hw-xbox-handheld",
+    "slug": "xbox-nextgen-hybrid-handheld-leak-specs",
+    "title": "Xbox Next-Gen Handheld Leaks: AMD Strix Point APU, Docked Mode & Steam Integration",
+    "category": "Handhelds",
+    "specsBadge": "RDNA 3.5 • Native Xbox OS • Steam Deck Rival",
+    "rating": "Anticipated 2026 Launch",
+    "date": "September 2026",
+    "readTime": "5 min read",
+    "imageUrl": "/images/stories/xbox-leak.jpg",
+    "description": "Internal documents reveal Microsoft's dual-tier hardware roadmap combining a powerful handheld dock with native Windows gaming compatibility.",
+    "content": "### Microsoft's Direct Answer to Steam Deck and Switch 2\n\nInsider reports and FTC documentation leaks indicate that Microsoft's Xbox hardware division is preparing a **native dedicated gaming handheld** alongside their next home console generation.\n\n#### Leaked Specifications:\n- **Processor:** Custom AMD Zen 5 + RDNA 3.5 APU with NPU acceleration\n- **Display:** 7.4-inch 120Hz VRR OLED screen with 1000 nits HDR peak brightness\n- **Storage:** M.2 2230 NVMe PCIe 4.0 SSD (up to 2TB)\n- **OS Hybrid Mode:** Boots into a streamlined Xbox console dashboard with instant resume, with an optional toggle to access Steam, Epic Games, and GOG libraries.\n\nThis device could redefine portable PC gaming by offering console-level optimization with full PC catalog freedom."
+  }
+]

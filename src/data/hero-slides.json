@@ -1,0 +1,41 @@
+[
+  {
+    "id": "gta-6-trailer-2",
+    "slug": "gta-6-trailer-2",
+    "number": "01",
+    "badge": "FEATURED STORY",
+    "title": "GTA 6 Trailer 2 Breakdown",
+    "description": "Every detail you might have missed from Rockstar's biggest trailer yet.",
+    "ctaText": "READ FULL STORY",
+    "ctaLink": "/stories/gta-6-trailer-2",
+    "imageUrl": "/images/hero/gta6-trailer.jpg",
+    "imageAlt": "Grand Theft Auto VI dusk skyline and sports car showcase",
+    "content": "## GTA 6 Trailer 2 Breakdown: Secrets, Vice City Landmarks & Engine Leaps\n\nRockstar Games has delivered yet another cinematic tour de force with the second official trailer for **Grand Theft Auto VI**. Clocking in at just under three minutes, the trailer offers an unprecedented look at modern Leonida, the dynamic relationship between protagonists Lucia and Jason, and an evolution in open-world rendering technology that redefines next-gen gaming.\n\n### 1. Groundbreaking Physics & Volumetric Fidelity\n\nFrom the neon-drenched boulevards of Vice Beach to the murky waterways of the Grassrivers, every biome displays astonishing environmental simulation:\n\n- **Volumetric Clouds and Weather**: Dynamic thunderstorm cells rolling across the gulf with realistic moisture diffusion and localized lightning strikes.\n- **Hair and Fabric Simulation**: Strands of hair and wind-blown attire react physically to vehicle speed and ambient wind.\n- **Water Surface Caustics**: Speedboats churn authentic fluid displacement with accurate wave reflections and foam wake physics.\n\n> \"Leonida represents our most ambitious, dense, and physically reactive world to date. Every neighborhood tells a living story.\"\n\n### 2. Living Ecosystems & AI Densities\n\nCrowd density in beachfront promenades and night clubs reaches hundreds of autonomous NPCs—each exhibiting context-aware behaviors like taking smartphone videos, interacting with street vendors, and reacting dynamically to nearby disturbances.\n\n### 3. Release Window & Platforms\n\nGTA 6 remains firmly on track for its anticipated launch on PlayStation 5 and Xbox Series X|S. Stay tuned to **TheGamerX** for frame-by-frame analyses and breakdown specials."
+  },
+  {
+    "id": "witcher-4-engine",
+    "slug": "witcher-4-engine",
+    "number": "02",
+    "badge": "FEATURED STORY",
+    "title": "The Witcher 4: Next-Gen World Reveal",
+    "description": "CD Projekt Red unveils northern kingdoms fidelity powered by Unreal Engine 5.",
+    "ctaText": "READ FULL STORY",
+    "ctaLink": "/stories/witcher-4-engine",
+    "imageUrl": "/images/hero/gta6-trailer.jpg",
+    "imageAlt": "The Witcher 4 landscape concept",
+    "content": "## The Witcher 4: Next-Gen World Reveal Powered by Unreal Engine 5\n\nCD Projekt Red has officially detailed the next saga in The Witcher universe, internally codenamed **Project Polaris**. Transitioning from their in-house REDengine to Epic Games' **Unreal Engine 5**, the studio is building a gritty, sprawling fantasy realm that promises unmatched visual fidelity and seamless open-world exploration.\n\n### Deep Dive: Nanite Geometry & Lumen Illumination\n\nBy leveraging Unreal Engine 5.5's cutting-edge toolset, the northern regions are rendered with millions of micro-polygons without traditional LOD pop-in:\n\n- **Dense Forest Canopies**: Fully simulated foliage, procedural moss, and dynamic branch collisions as monsters stalk between trees.\n- **Global Illumination**: Taverns lit solely by hearth flames and swinging lanterns, casting bounce lighting across weathered wooden beams.\n- **Subsurface Scattering**: Witchers and supernatural beasts feature lifelike skin textures, scars, and reactive weather wear.\n\n> \"Unreal Engine 5 allows our environmental artists and quest designers to iterate with unprecedented freedom while maintaining rock-solid 60 FPS performance targets.\"\n\n### A New School of Witchers\n\nWhile details regarding the central protagonist remain shrouded in mystery, the medallion teaser confirmed the Lynx school—signaling fresh lore, novel alchemy trees, and fluid swordplay systems."
+  },
+  {
+    "id": "ps5-pro-analysis",
+    "slug": "ps5-pro-analysis",
+    "number": "03",
+    "badge": "FEATURED STORY",
+    "title": "PS5 Pro Architectural Deep Dive",
+    "description": "PSSR upscaling and ray-tracing hardware tested across marquee titles.",
+    "ctaText": "READ FULL STORY",
+    "ctaLink": "/stories/ps5-pro-analysis",
+    "imageUrl": "/images/hero/gta6-trailer.jpg",
+    "imageAlt": "PlayStation 5 Pro chassis and controller schematic",
+    "content": "## PS5 Pro Architectural Deep Dive: PSSR, Ray Tracing & Performance Metrics\n\nSony Interactive Entertainment's **PlayStation 5 Pro** is here, positioning itself as the premier console for enthusiast gamers seeking the holy grail: pristine 4K resolution coupled with a fluid 60 frames per second.\n\n### The Three Pillars of PS5 Pro\n\n1. **Upgraded GPU**: A 67% increase in Compute Units delivering up to 45% faster graphic rendering in demanding action scenes.\n2. **Advanced Ray Tracing**: Custom ray-tracing hardware calculating light rays at double—and in some titles triple—the speed of the base PS5.\n3. **PlayStation Spectral Super Resolution (PSSR)**: Machine-learning powered temporal upscaling that replaces traditional FSR, producing ultra-crisp edges without artifacting.\n\n### Real-World Game Testing\n\nIn our studio benchmarks across marquee titles, the difference is immediate:\n\n| Game | Base PS5 Mode | PS5 Pro Enhanced |\n| :--- | :--- | :--- |\n| *Spider-Man 2* | 1440p @ 60 FPS (Fidelity Off) | 4K PSSR @ 60 FPS + Full Ray Tracing |\n| *Alan Wake 2* | 864p internal upscaled to 1440p | 1260p internal upscaled to 4K + RT Reflections |\n| *Final Fantasy VII Rebirth* | Soft 1080p Performance Mode | Razor-sharp 4K @ 60 FPS |\n\nFor gamers with modern OLED or high-refresh rate HDR displays, the PS5 Pro sets an undeniable new standard for console gaming."
+  }
+]

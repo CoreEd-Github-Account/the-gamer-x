@@ -12,18 +12,15 @@ interface LatestStoriesProps {
 }
 
 const getStoryHref = (story: Story): string => {
-  // For all internal stories, strictly use the WordPress slug
   if (story.slug) {
     return `/stories/${story.slug}`;
   }
-  // Keep customExternalLink/href only as an absolute fallback for external URLs (like https://...)
   if (
     story.href &&
     (story.href.startsWith("http://") || story.href.startsWith("https://"))
   ) {
     return story.href;
   }
-  // Fallback if id exists and is not an anchor
   if (story.id && !story.id.startsWith("#")) {
     return `/stories/${story.id}`;
   }
@@ -42,7 +39,7 @@ const StoryImage: React.FC<{
       <div
         className={`w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center text-slate-500 text-xs font-mono ${className}`}
       >
-        <span>gamerX</span>
+        <span>TheGamerX</span>
       </div>
     );
   }
@@ -88,11 +85,11 @@ export const LatestStories: React.FC<LatestStoriesProps> = ({
       {/* Featured Content */}
       <div className="p-5 sm:p-6">
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400">
+          <span className="text-[10px] font-black uppercase tracking-widest text-blue-400">
             {featuredStory.category}
           </span>
         </div>
-        <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white group-hover:text-cyan-400 transition-colors leading-snug mb-3">
+        <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white group-hover:text-blue-400 transition-colors leading-snug mb-3">
           {featuredStory.title}
         </h3>
         <p className="text-xs text-slate-400 font-medium">
@@ -103,10 +100,12 @@ export const LatestStories: React.FC<LatestStoriesProps> = ({
   );
 
   const featuredCardClasses =
-    "group block h-full rounded-xl bg-[#0e131f] border border-white/5 hover:border-cyan-500/30 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/5";
+    "group block h-full rounded-xl bg-[#0e131f] border border-white/5 hover:border-blue-500/30 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5";
 
   return (
-    <section className="py-8 sm:py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="latest-stories" className="py-8 sm:py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 relative">
+      <span id="news" className="absolute -top-24 left-0 invisible pointer-events-none" />
+      <span id="stories" className="absolute -top-24 left-0 invisible pointer-events-none" />
       <SectionHeader
         title="LATEST STORIES"
         actionText="VIEW ALL NEWS"
@@ -158,10 +157,10 @@ export const LatestStories: React.FC<LatestStoriesProps> = ({
 
                   {/* Compact Meta & Title */}
                   <div className="flex flex-col justify-center min-w-0 flex-1">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400 mb-1">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-blue-400 mb-1">
                       {story.category}
                     </span>
-                    <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 leading-snug mb-2">
+                    <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug mb-2">
                       {story.title}
                     </h4>
                     <p className="text-[11px] text-slate-400 font-medium">
@@ -172,7 +171,7 @@ export const LatestStories: React.FC<LatestStoriesProps> = ({
               );
 
               const sideCardClasses =
-                "group flex items-center gap-4 p-3 sm:p-3.5 rounded-xl bg-[#0e131f] border border-white/5 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/5 flex-1";
+                "group flex items-center gap-4 p-3 sm:p-3.5 rounded-xl bg-[#0e131f] border border-white/5 hover:border-blue-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5 flex-1";
 
               return isExternal ? (
                 <a
@@ -198,4 +197,3 @@ export const LatestStories: React.FC<LatestStoriesProps> = ({
 };
 
 export default LatestStories;
-
