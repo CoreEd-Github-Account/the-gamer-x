@@ -75,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({ logoUrl }) => {
     }
     if (
       (pathname?.startsWith("/stories") || pathname?.startsWith("/news")) &&
-      (href.includes("latest-stories") || href.includes("news"))
+      (href.includes("latest-stories") || href.includes("stories") || href.includes("news"))
     ) {
       return true;
     }
@@ -103,7 +103,7 @@ export const Header: React.FC<HeaderProps> = ({ logoUrl }) => {
     if (href.includes(activeSection)) return true;
     if (
       activeSection === "latest-stories" &&
-      (href.includes("news") || href.includes("latest-stories"))
+      (href.includes("news") || href.includes("latest-stories") || href === "/stories")
     ) {
       return true;
     }
@@ -151,7 +151,7 @@ export const Header: React.FC<HeaderProps> = ({ logoUrl }) => {
             {NAV_LINKS.map((link) => {
               const active = isLinkActive(link.href, link.isActive);
               return (
-                <a
+                <Link
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
@@ -165,7 +165,7 @@ export const Header: React.FC<HeaderProps> = ({ logoUrl }) => {
                   {active && (
                     <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-blue-500 rounded-full shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
                   )}
-                </a>
+                </Link>
               );
             })}
           </nav>
@@ -354,7 +354,7 @@ export const Header: React.FC<HeaderProps> = ({ logoUrl }) => {
           {NAV_LINKS.map((link) => {
             const active = isLinkActive(link.href, link.isActive);
             return (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
@@ -368,7 +368,7 @@ export const Header: React.FC<HeaderProps> = ({ logoUrl }) => {
                 {active && (
                   <span className="text-xs text-blue-400 font-mono">Active</span>
                 )}
-              </a>
+              </Link>
             );
           })}
         </div>

@@ -20,7 +20,7 @@ export const SITE_INFO: SiteInfo = {
 };
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "LATEST STORIES", href: "/#latest-stories", isActive: true },
+  { label: "LATEST STORIES", href: "/stories" },
   { label: "TRENDING", href: "/#trending" },
   { label: "ANALYSIS", href: "/#analysis" },
   { label: "FORUM", href: "/forum" },
