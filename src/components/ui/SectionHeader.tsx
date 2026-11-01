@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 interface SectionHeaderProps {
   title: string;
@@ -19,7 +20,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
         {title}
       </h2>
       {actionText && (
-        <a
+        <Link
           href={actionHref}
           className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1.5 group"
         >
@@ -27,7 +28,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
           <span className="transform transition-transform duration-150 group-hover:translate-x-0.5">
             &rarr;
           </span>
-        </a>
+        </Link>
       )}
     </div>
   );

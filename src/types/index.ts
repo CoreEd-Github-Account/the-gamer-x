@@ -50,6 +50,7 @@ export interface TrendingGame {
   isFeatured?: boolean;
   href?: string;
   description?: string;
+  rating?: string;
 }
 
 export type GameItem = TrendingGame;

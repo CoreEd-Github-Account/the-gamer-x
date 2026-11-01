@@ -66,7 +66,7 @@ export const TrendingGames: React.FC<TrendingGamesProps> = ({
       <SectionHeader
         title="TRENDING GAMES"
         actionText="EXPLORE ALL GAMES"
-        actionHref="#all-games"
+        actionHref="/games"
       />
 
       <div className="relative group/carousel">

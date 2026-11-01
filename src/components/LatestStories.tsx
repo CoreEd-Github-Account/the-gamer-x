@@ -109,7 +109,7 @@ export const LatestStories: React.FC<LatestStoriesProps> = ({
       <SectionHeader
         title="LATEST STORIES"
         actionText="VIEW ALL NEWS"
-        actionHref="#all-news"
+        actionHref="/stories"
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">

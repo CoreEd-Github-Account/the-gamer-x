@@ -61,7 +61,7 @@ export const Hardware: React.FC<HardwareProps> = ({
       <SectionHeader
         title="HARDWARE & GEAR BENCHMARKS"
         actionText="EXPLORE HARDWARE"
-        actionHref="#all-hardware"
+        actionHref="/hardware"
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">

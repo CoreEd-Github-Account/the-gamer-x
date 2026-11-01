@@ -73,6 +73,30 @@ export const Header: React.FC<HeaderProps> = ({ logoUrl }) => {
     if (pathname?.startsWith("/write-for-us") && href === "/write-for-us") {
       return true;
     }
+    if (
+      (pathname?.startsWith("/stories") || pathname?.startsWith("/news")) &&
+      (href.includes("latest-stories") || href.includes("news"))
+    ) {
+      return true;
+    }
+    if (
+      pathname?.startsWith("/games") &&
+      (href.includes("trending") || href.includes("games"))
+    ) {
+      return true;
+    }
+    if (
+      pathname?.startsWith("/analysis") &&
+      href.includes("analysis")
+    ) {
+      return true;
+    }
+    if (
+      pathname?.startsWith("/hardware") &&
+      href.includes("hardware")
+    ) {
+      return true;
+    }
     if (pathname !== "/" && href !== pathname) {
       return false;
     }

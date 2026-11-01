@@ -54,7 +54,7 @@ export const IndustryAnalysis: React.FC<IndustryAnalysisProps> = ({
       <SectionHeader
         title="DEEP INDUSTRY ANALYSIS"
         actionText="VIEW ALL ANALYSIS"
-        actionHref="#all-analysis"
+        actionHref="/analysis"
       />
 
       <div className="rounded-2xl bg-[#0b0f1a] border border-white/5 p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8">
